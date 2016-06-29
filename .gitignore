@@ -1,0 +1,9 @@
+model
+src-gen
+xtend-gen
+node_modules
+build
+.settings
+.project
+.classpath
+bin

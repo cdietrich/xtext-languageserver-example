@@ -1,0 +1,13 @@
+apply plugin: 'application'
+
+dependencies {
+	compile project(':org.xtext.example.mydsl')
+	compile "org.eclipse.xtext:org.eclipse.xtext.ide:${xtextVersion}"
+	compile "org.eclipse.xtext:org.eclipse.xtext.xbase.ide:${xtextVersion}"
+}
+
+mainClassName = "org.xtext.example.mydsl.ide.RunServer"
+
+startScripts {
+    applicationName = 'MyDsl Language Server'
+}

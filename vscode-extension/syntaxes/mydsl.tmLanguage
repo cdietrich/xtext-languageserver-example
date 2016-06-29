@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>*.mydsl</string>
+	</array>
+	<key>name</key>
+	<string>mydsl</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>keyword.control.mydsl</string>
+			<key>match</key>
+			<string>\b(Hello|from)\b</string>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>text.mydsl</string>
+</dict>
+</plist>
