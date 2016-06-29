@@ -7,5 +7,5 @@ os:
   - linux
 
 script:
-- cd org.xtext.example.mydsl.parent
+- cd org.xtext.example.mydsl.parent/
 - ./gradlew clean build --rerun-tasks 
