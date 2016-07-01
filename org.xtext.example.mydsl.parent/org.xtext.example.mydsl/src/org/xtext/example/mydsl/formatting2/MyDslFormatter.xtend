@@ -12,8 +12,6 @@ import org.xtext.example.mydsl.services.MyDslGrammarAccess
 
 class MyDslFormatter extends AbstractFormatter2 {
 	
-	@Inject extension MyDslGrammarAccess
-
 	def dispatch void format(Model model, extension IFormattableDocument document) {
 		for (Greeting greetings : model.getGreetings()) {
 			greetings.format;
@@ -22,9 +20,9 @@ class MyDslFormatter extends AbstractFormatter2 {
 	
 	def dispatch void format(Greeting model, extension IFormattableDocument document) {
 		model.prepend[newLines = 2]
-		model.regionFor.keyword(greetingAccess.fromKeyword_2_0).prepend[newLine]
+		model.regionFor.keyword("from").prepend[newLine]
 		
-		interior(model.regionFor.keyword(greetingAccess.fromKeyword_2_0).previousSemanticRegion, model.regionFor.keyword(greetingAccess.exclamationMarkKeyword_3))[indent]
+		interior(model.regionFor.keyword("from").previousSemanticRegion, model.regionFor.keyword("!"))[indent]
 	}
 	
 }
