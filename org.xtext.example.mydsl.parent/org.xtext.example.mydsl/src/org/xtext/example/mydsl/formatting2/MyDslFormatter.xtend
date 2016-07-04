@@ -3,26 +3,25 @@
  */
 package org.xtext.example.mydsl.formatting2
 
-import com.google.inject.Inject
 import org.eclipse.xtext.formatting2.AbstractFormatter2
 import org.eclipse.xtext.formatting2.IFormattableDocument
 import org.xtext.example.mydsl.myDsl.Greeting
 import org.xtext.example.mydsl.myDsl.Model
-import org.xtext.example.mydsl.services.MyDslGrammarAccess
 
 class MyDslFormatter extends AbstractFormatter2 {
-	
+
 	def dispatch void format(Model model, extension IFormattableDocument document) {
 		for (Greeting greetings : model.getGreetings()) {
 			greetings.format;
 		}
 	}
-	
+
 	def dispatch void format(Greeting model, extension IFormattableDocument document) {
 		model.prepend[newLines = 2]
-		model.regionFor.keyword("from").prepend[newLine]
-		
-		interior(model.regionFor.keyword("from").previousSemanticRegion, model.regionFor.keyword("!"))[indent]
+		if (model.from != null) {
+			model.regionFor.keyword("from").prepend[newLine]
+			interior(model.regionFor.keyword("from").previousSemanticRegion, model.regionFor.keyword("!"))[indent]
+		}
 	}
-	
+
 }
