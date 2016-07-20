@@ -3,7 +3,7 @@
     "displayName": "MyDsl",
     "description": "MyDsl Language",
     "version": "0.0.1",
-    "publisher": "itemis AG",
+    "publisher": "itemis",
     "engines": {
         "vscode": "^1.2.0"
     },
