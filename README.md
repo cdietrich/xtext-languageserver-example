@@ -9,8 +9,8 @@
 ## Build VS Code Extension Package
 
 - `npm install -g vsce`
-- `cd scode-extension`
-- `vsce package
+- `cd vscode-extension`
+- `vsce package`
 
 ## Installing to VS Code
 
