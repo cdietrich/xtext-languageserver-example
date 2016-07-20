@@ -16,5 +16,14 @@
 
 - `code mydsl-0.0.1.vsix` 
 
+## Building FAT Jar
+
+- `cd org.xtext.example.mydsl.parent/org.xtext.example.mydsl.ide/`
+- `gradle shadowJar`
+
+## Run Server from FAT Jar
+- `cd org.xtext.example.mydsl.parent/org.xtext.example.mydsl.ide/`
+- `java -jar build/libs/org.xtext.example.mydsl.ide-1.0.0-SNAPSHOT-all.jar`
+
 
 [![Build Status](https://travis-ci.org/cdietrich/xtext-languageserver-example.svg?branch=master)](https://travis-ci.org/cdietrich/xtext-languageserver-example)
