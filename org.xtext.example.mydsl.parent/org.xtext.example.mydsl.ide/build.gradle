@@ -1,3 +1,14 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
+    }
+}
+
+apply plugin: 'com.github.johnrengelman.shadow'
+
 apply plugin: 'application'
 
 dependencies {
@@ -10,4 +21,19 @@ mainClassName = "org.xtext.example.mydsl.ide.RunServer"
 
 startScripts {
     applicationName = 'MyDsl Language Server'
+}
+
+task fatJar(type: Jar) {
+	from ('./src/') {
+    	include 'META-INF/services/*'
+  	}
+	classifier = 'with-dependencies'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+    from sourceSets.main.output
+    include '**/*.class'
+    manifest {
+        attributes("Main-Class": mainClassName,  'Class-Path': configurations.runtime.files.collect { "lib/$it.name" }.join(' '))
+    }
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
 }
