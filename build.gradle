@@ -59,6 +59,11 @@ configure(subprojects.findAll { it.name.startsWith('vscode') }) {
 
 	apply plugin: 'com.moowork.node'
 
+	node {
+		version = '6.2.2'
+		npmVersion = '3.10.6'
+	}
+
 	npmInstall.dependsOn ':org.xtext.example.mydsl.ide:shadowJar'
 
 	task vscodeExtension(dependsOn: [npmInstall, npmInstallVsce], type: NodeTask) {
@@ -69,6 +74,10 @@ configure(subprojects.findAll { it.name.startsWith('vscode') }) {
 		}
 		script = file("$rootProject.projectDir/node_modules/vsce/out/vsce")
 		args = [ 'package', '--out', "$destDir/$project.name-${project.version}.vsix" ]
+	}
+
+	task clean << {
+    	delete vscodeExtension.destDir
 	}
 
 }
