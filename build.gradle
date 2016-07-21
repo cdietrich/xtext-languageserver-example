@@ -62,6 +62,7 @@ configure(subprojects.findAll { it.name.startsWith('vscode') }) {
 	node {
 		version = '6.2.2'
 		npmVersion = '3.10.6'
+		download = true
 	}
 
 	npmInstall.dependsOn ':org.xtext.example.mydsl.ide:shadowJar'
