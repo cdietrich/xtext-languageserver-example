@@ -1,5 +1,10 @@
 ## Quickstart
 
+- run `./build-all.sh`
+- `code vscode-extension-self-contained/mydsl-sc-0.0.1.vsix`
+
+## Building in Details
+
 - run `npm install` inside vscode-extension
 - run `npm install` vscode-extension-self-contained
 - run `./gradlew build shadowJar` inside org.xtext.example.mydsl.parent
