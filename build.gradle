@@ -68,7 +68,7 @@ configure(subprojects.findAll { it.name.startsWith('vscode') }) {
 
 	task vscodeExtension(dependsOn: [npmInstall, npmInstallVsce], type: NodeTask) {
 		ext.destDir = new File(buildDir, 'vscode')
-    	outputs.dir destDir
+		outputs.dir destDir
 		doFirst {
 			destDir.mkdirs()
 		}
@@ -77,7 +77,7 @@ configure(subprojects.findAll { it.name.startsWith('vscode') }) {
 	}
 
 	task clean << {
-    	delete vscodeExtension.destDir
+		delete vscodeExtension.destDir
 	}
 
 }
