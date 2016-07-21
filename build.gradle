@@ -12,6 +12,12 @@ plugins {
 	id "com.moowork.node" version "0.13"
 }
 
+node {
+	version = '6.2.2'
+	npmVersion = '3.10.6'
+	download = true
+}
+
 // Configuration for Xtext projects
 configure(subprojects.findAll { it.name.startsWith('org.xtext') }) {
 
@@ -60,9 +66,7 @@ configure(subprojects.findAll { it.name.startsWith('vscode') }) {
 	apply plugin: 'com.moowork.node'
 
 	node {
-		version = '6.2.2'
-		npmVersion = '3.10.6'
-		download = true
+		nodeModulesDir = rootProject.projectDir
 	}
 
 	npmInstall.dependsOn ':org.xtext.example.mydsl.ide:shadowJar'
@@ -77,6 +81,9 @@ configure(subprojects.findAll { it.name.startsWith('vscode') }) {
 		}
 		script = file("$rootProject.projectDir/node_modules/vsce/out/vsce")
 		args = [ 'package', '--out', destPath ]
+		execOverrides {
+			workingDir = projectDir
+		}
 	}
 
 	task clean << {
