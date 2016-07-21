@@ -1,6 +1,7 @@
 /**
  * Problem: right now we cannot install the plugin in a headless mode.
  * That's why we need this hacky task...
+ * @see https://github.com/Microsoft/vscode/issues/9585
  */
 task installExtension(type: Exec, dependsOn: vscodeExtension) {
     commandLine 'code'
