@@ -1,0 +1,46 @@
+plugins {
+	id 'com.github.johnrengelman.shadow' version '1.2.3'
+}
+
+apply plugin: 'application'
+
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
+dependencies {
+	compile project(':org.xtext.example.mydsl')
+	compile "org.eclipse.xtext:org.eclipse.xtext.ide:${xtextVersion}"
+	compile "org.eclipse.xtext:org.eclipse.xtext.xbase.ide:${xtextVersion}"
+}
+
+mainClassName = "org.xtext.example.mydsl.ide.RunServer"
+
+startScripts {
+	applicationName = 'MyDsl Language Server'
+}
+
+task socketShadowJar(type: ShadowJar, dependsOn: assemble) {
+	manifest.attributes 'Main-Class': 'org.xtext.example.mydsl.ide.RunServer'
+	from(project.convention.getPlugin(JavaPluginConvention).sourceSets.main.output)
+	configurations = [project.configurations.runtime]
+	exclude('META-INF/INDEX.LIST', 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA')
+	classifier = 'socket-all'
+}
+
+task ioShadowJar(type: ShadowJar, dependsOn: assemble) {
+	manifest.attributes 'Main-Class': 'org.eclipse.xtext.ide.server.ServerLauncher'
+	from(project.convention.getPlugin(JavaPluginConvention).sourceSets.main.output)
+	configurations = [project.configurations.runtime]
+	exclude('META-INF/INDEX.LIST', 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA')
+	baseName = 'mydsl-full'
+	classifier = null
+	version = null
+	destinationDir = file("$projectDir/../vscode-extension-self-contained/src")
+}
+
+task shadowJars {
+	dependsOn socketShadowJar, ioShadowJar
+}
+
+clean.doFirst {
+    delete tasks.ioShadowJar.archivePath
+}

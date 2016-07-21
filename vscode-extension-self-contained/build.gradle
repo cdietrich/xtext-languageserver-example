@@ -1,0 +1,17 @@
+/**
+ * Problem: right now we cannot install the plugin in a headless mode.
+ * That's why we need this hacky task...
+ * @see https://github.com/Microsoft/vscode/issues/9585
+ */
+task installExtension(type: Exec, dependsOn: vscodeExtension) {
+    commandLine 'code'
+    args vscodeExtension.destPath, '--new-window'
+    doLast {
+        Thread.sleep(5000)
+    }
+}
+
+task startCode(type:Exec, dependsOn: installExtension) {
+    commandLine 'code'
+    args "$rootProject.projectDir/demo/", '--reuse-window'
+}

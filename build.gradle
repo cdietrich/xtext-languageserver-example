@@ -4,14 +4,26 @@ buildscript {
 	}
 	dependencies {
 		classpath 'org.xtext:xtext-gradle-plugin:1.0.5'
+		classpath 'com.moowork.gradle:gradle-node-plugin:0.13'
 	}
 }
 
-subprojects {
+plugins {
+	id "com.moowork.node" version "0.13"
+}
+
+node {
+	version = '6.2.2'
+	npmVersion = '3.10.6'
+	download = true
+}
+
+// Configuration for Xtext projects
+configure(subprojects.findAll { it.name.startsWith('org.xtext') }) {
+
 	ext.xtextVersion = '2.11.0-SNAPSHOT'
 	repositories {
 		jcenter()
-		mavenLocal()
 		maven { url 'http://services.typefox.io/open-source/jenkins/job/lsapi/lastStableBuild/artifact/build/maven-repository/' }
 		maven { url 'http://services.typefox.io/open-source/jenkins/job/xtext-lib/job/master/lastStableBuild/artifact/build/maven-repository/' }
 		maven { url 'http://services.typefox.io/open-source/jenkins/job/xtext-core/job/master/lastStableBuild/artifact/build/maven-repository/' }
@@ -37,5 +49,47 @@ subprojects {
 	
 	configurations.all {
 		exclude group: 'asm'
+	}
+
+}
+
+task npmInstallVsce(type: NpmTask, dependsOn: npmSetup) {
+	group 'Node'
+	description 'Installs the NodeJS package "Visual Studio Code Extension Manager"'
+	args = [ 'install', 'vsce' ]
+}
+
+// Configuration for vscode projects
+configure(subprojects.findAll { it.name.startsWith('vscode') }) {
+
+	apply plugin: 'com.moowork.node'
+
+	npmInstall.dependsOn ':org.xtext.example.mydsl.ide:shadowJars'
+
+	task vscodeExtension(dependsOn: [npmInstall, npmInstallVsce], type: NodeTask) {
+		ext.destDir = new File(buildDir, 'vscode')
+		ext.archiveName = "$project.name-${project.version}.vsix"
+		ext.destPath = "$destDir/$archiveName"
+		outputs.dir destDir
+		doFirst {
+			destDir.mkdirs()
+		}
+		script = file("$rootProject.projectDir/node_modules/vsce/out/vsce")
+		args = [ 'package', '--out', destPath ]
+		execOverrides {
+			workingDir = projectDir
+		}
+	}
+
+	task clean << {
+		delete vscodeExtension.destDir
+	}
+
+}
+
+plugins.withType(com.moowork.gradle.node.NodePlugin) {
+	node {
+		workDir = file("$rootProject.buildDir/nodejs")
+		nodeModulesDir = rootProject.projectDir
 	}
 }
