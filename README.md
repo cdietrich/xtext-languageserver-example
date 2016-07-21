@@ -15,9 +15,9 @@ This is an Example showing the Visual Studio Code integration of Xtext using the
 - `vscode-extension` (node based vs code extension to run with a separate server using socket)
 - `vscode-extension-self-contained` (node based vs code extension to run with a embedded server using process io)
 - `org.xtext.example.mydsl.parent` (containing a example dsl)
--- `org.xtext.example.mydsl` (contains the dsl)
--- `org.xtext.example.mydsl.ide` (contains the ide part and the interesting parts)
--- `org.xtext.example.mydsl.tests`
+ - `org.xtext.example.mydsl` (contains the dsl)
+ - `org.xtext.example.mydsl.ide` (contains the ide part and the interesting parts)
+ - `org.xtext.example.mydsl.tests`
 
 
 ## Building in Details
