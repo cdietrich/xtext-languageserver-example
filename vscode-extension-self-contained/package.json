@@ -1,36 +1,46 @@
 {
-    "name": "mydsl-sc",
-    "displayName": "MyDsl",
-    "description": "MyDsl Language (Selfcontained)",
+    "name": "xtext-vscode-example",
+    "displayName": "Xtext VS Code example",
+    "description": "A simple dsl example for VS Code",
     "version": "0.0.1",
     "publisher": "itemis",
+    "icon": "images/itemis.png",
+    "license": "EPL-1.0",
     "engines": {
         "vscode": "^1.2.0"
     },
     "categories": [
         "Languages"
     ],
-	"activationEvents": [
-		"onLanguage:mydsl"
-	],
-	"main": "src/extension",
+    "activationEvents": [
+        "onLanguage:mydsl"
+    ],
+    "main": "src/extension",
     "contributes": {
-        "languages": [{
-            "id": "mydsl",
-            "aliases": ["mydsl"],
-            "extensions": [".mydsl"],
-            "configuration": "./mydsl.configuration.json"
-        }],
-        "grammars": [{
-            "language": "mydsl",
-            "scopeName": "text.mydsl",
-            "path": "./syntaxes/mydsl.tmLanguage"
-        }]
+        "languages": [
+            {
+                "id": "mydsl",
+                "aliases": [
+                    "mydsl"
+                ],
+                "extensions": [
+                    ".mydsl"
+                ],
+                "configuration": "./mydsl.configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "mydsl",
+                "scopeName": "text.mydsl",
+                "path": "./syntaxes/mydsl.tmLanguage"
+            }
+        ]
     },
-	"devDependencies": {
-		"typescript": "^1.8.10",
-		"vscode": "^0.11.13"
-	},
+    "devDependencies": {
+        "typescript": "^1.8.10",
+        "vscode": "^0.11.13"
+    },
     "dependencies": {
         "vscode-languageclient": "^2.3.0"
     }

@@ -15,3 +15,11 @@ task startCode(type:Exec, dependsOn: installExtension) {
     commandLine 'code'
     args "$rootProject.projectDir/demo/", '--reuse-window'
 }
+
+task publish(dependsOn: vscodeExtension, type: NodeTask) {
+    script = file("$rootProject.projectDir/node_modules/vsce/out/vsce")
+    args = [ 'publish', '-p', System.getenv('ACCESS_TOKEN'), project.version ]
+    execOverrides {
+        workingDir = projectDir
+    }
+}
