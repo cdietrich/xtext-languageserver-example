@@ -18,12 +18,12 @@ startScripts {
 	applicationName = 'MyDsl Language Server'
 }
 
-task httpShadowJar(type: ShadowJar, dependsOn: assemble) {
+task socketShadowJar(type: ShadowJar, dependsOn: assemble) {
 	manifest.attributes 'Main-Class': 'org.xtext.example.mydsl.ide.RunServer'
 	from(project.convention.getPlugin(JavaPluginConvention).sourceSets.main.output)
 	configurations = [project.configurations.runtime]
 	exclude('META-INF/INDEX.LIST', 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA')
-	classifier = "http-all"
+	classifier = 'socket-all'
 }
 
 task ioShadowJar(type: ShadowJar, dependsOn: assemble) {
@@ -37,7 +37,7 @@ task ioShadowJar(type: ShadowJar, dependsOn: assemble) {
 }
 
 task shadowJars {
-	dependsOn httpShadowJar, ioShadowJar
+	dependsOn socketShadowJar, ioShadowJar
 }
 
 clean.doFirst {
