@@ -69,12 +69,14 @@ configure(subprojects.findAll { it.name.startsWith('vscode') }) {
 
 	task vscodeExtension(dependsOn: [npmInstall, npmInstallVsce], type: NodeTask) {
 		ext.destDir = new File(buildDir, 'vscode')
+		ext.archiveName = "$project.name-${project.version}.vsix"
+		ext.destPath = "$destDir/$archiveName"
 		outputs.dir destDir
 		doFirst {
 			destDir.mkdirs()
 		}
 		script = file("$rootProject.projectDir/node_modules/vsce/out/vsce")
-		args = [ 'package', '--out', "$destDir/$project.name-${project.version}.vsix" ]
+		args = [ 'package', '--out', destPath ]
 	}
 
 	task clean << {
