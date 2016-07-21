@@ -53,7 +53,7 @@ configure(subprojects.findAll { it.name.startsWith('org.xtext') }) {
 
 }
 
-task npmInstallVsce(type: NpmTask) {
+task npmInstallVsce(type: NpmTask, dependsOn: npmSetup) {
 	group 'Node'
 	description 'Installs the NodeJS package "Visual Studio Code Extension Manager"'
 	args = [ 'install', 'vsce' ]
