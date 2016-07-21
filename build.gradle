@@ -4,10 +4,17 @@ buildscript {
 	}
 	dependencies {
 		classpath 'org.xtext:xtext-gradle-plugin:1.0.5'
+		classpath 'com.moowork.gradle:gradle-node-plugin:0.13'
 	}
 }
 
-subprojects {
+plugins {
+	id "com.moowork.node" version "0.13"
+}
+
+// Configuration for Xtext projects
+configure(subprojects.findAll { it.name.startsWith('org.xtext') }) {
+
 	ext.xtextVersion = '2.11.0-SNAPSHOT'
 	repositories {
 		jcenter()
@@ -38,4 +45,30 @@ subprojects {
 	configurations.all {
 		exclude group: 'asm'
 	}
+
+}
+
+task npmInstallVsce(type: NpmTask) {
+	group 'Node'
+	description 'Installs the NodeJS package "Visual Studio Code Extension Manager"'
+	args = [ 'install', 'vsce' ]
+}
+
+// Configuration for vscode projects
+configure(subprojects.findAll { it.name.startsWith('vscode') }) {
+
+	apply plugin: 'com.moowork.node'
+
+	npmInstall.dependsOn ':org.xtext.example.mydsl.ide:shadowJar'
+
+	task vscodeExtension(dependsOn: [npmInstall, npmInstallVsce], type: NodeTask) {
+		ext.destDir = new File(buildDir, 'vscode')
+    	outputs.dir destDir
+		doFirst {
+			destDir.mkdirs()
+		}
+		script = file("$rootProject.projectDir/node_modules/vsce/out/vsce")
+		args = [ 'package', '--out', "$destDir/$project.name-${project.version}.vsix" ]
+	}
+
 }

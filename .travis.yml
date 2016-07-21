@@ -5,13 +5,5 @@ jdk:
 os:
   - linux
 
-env:
-  - NODE_VERSION=6.1
-
 install:
-  - nvm install $NODE_VERSION
-  - npm install
-
-script:
-  - nvm use $NODE_VERSION
-  - ./build-all.sh
+  - ./gradlew vscodeExtension
