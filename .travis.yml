@@ -14,4 +14,4 @@ install:
 
 script:
   - nvm use $NODE_VERSION
-- ./build-all.sh
+  - ./build-all.sh
