@@ -1,9 +1,27 @@
+# Node
+node_modules
+
+# Xtext / Xtend
 model
 src-gen
 xtend-gen
-node_modules
-build
-.settings
-.project
+.antlr*.jar
+
+# Eclipse
 .classpath
-bin
+.project
+.settings/
+.metadata/
+bin/
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
+out/
+
+# Gradle
+.gradle/
+build/
+!gradle-wrapper.jar
