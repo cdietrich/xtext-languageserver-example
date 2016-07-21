@@ -4,6 +4,7 @@
     "description": "A simple dsl example for VS Code",
     "version": "0.0.1",
     "publisher": "itemis",
+    "icon": "images/itemis.png",
     "license": "EPL-1.0",
     "engines": {
         "vscode": "^1.2.0"
