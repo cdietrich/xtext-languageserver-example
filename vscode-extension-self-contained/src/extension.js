@@ -7,20 +7,14 @@
  *******************************************************************************/
 'use strict';
 var net = require('net');
+var path = require('path');
 var vscode_lc = require('vscode-languageclient');
+var spawn = require('child_process').spawn;
 function activate(context) {
-    var serverOptions = {
-        port: 5007
-    };
     var serverInfo = function () {
         // Connect to the language server via a io channel
-        var path = require('path');
         var jar = context.asAbsolutePath(path.join('src', 'org.xtext.example.mydsl.ide-1.0.0-SNAPSHOT-all.jar'));
-        console.log(jar);
-        var spawn = require('child_process').spawn;
         var child = spawn('java', ['-jar', jar]);
-
-        
         return Promise.resolve(child);
     };
     var clientOptions = {
