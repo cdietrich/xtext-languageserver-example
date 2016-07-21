@@ -18,8 +18,12 @@
 ## Installing to VS Code
 
 - `code mydsl-0.0.1.vsix` (in vscode-extension)
+- this requires a separate server started via fat jar (see below)
 or
 - `code mydsl-sc-0.0.1.vsix` (in vscode-extension-self-contained)
+- this is selfcontained
+
+File Open inside VS Code does basically the same.
 
 ## Building FAT Jar
 
@@ -28,7 +32,7 @@ or
 
 ## Run separate Server from FAT Jar
 - `cd org.xtext.example.mydsl.parent/org.xtext.example.mydsl.ide/`
-- `java -jar build/libs/org.xtext.example.mydsl.ide-1.0.0-SNAPSHOT-all.jar`
+- `java -jar build/libs/org.xtext.example.mydsl.ide-1.0.0-SNAPSHOT-http-all.jar`
 
 
 [![Build Status](https://travis-ci.org/cdietrich/xtext-languageserver-example.svg?branch=master)](https://travis-ci.org/cdietrich/xtext-languageserver-example)
