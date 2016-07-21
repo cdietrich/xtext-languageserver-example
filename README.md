@@ -1,3 +1,10 @@
+# Xtext Visual Studio Code Example
+
+This is an Example showing the Visual Studio Code integration of Xtext using the Microsoft Language Server Protocol.
+
+
+[![Build Status](https://travis-ci.org/cdietrich/xtext-languageserver-example.svg?branch=master)](https://travis-ci.org/cdietrich/xtext-languageserver-example)
+
 ## Quickstart
 
 - run `./build-all.sh`
@@ -39,5 +46,3 @@ File Open inside VS Code does basically the same.
 - `cd org.xtext.example.mydsl.parent/org.xtext.example.mydsl.ide/`
 - `java -jar build/libs/org.xtext.example.mydsl.ide-1.0.0-SNAPSHOT-http-all.jar`
 
-
-[![Build Status](https://travis-ci.org/cdietrich/xtext-languageserver-example.svg?branch=master)](https://travis-ci.org/cdietrich/xtext-languageserver-example)
