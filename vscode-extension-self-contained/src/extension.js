@@ -6,9 +6,6 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
 'use strict';
-if (global.Promise == null) {
-    global.Promise = require('es6-promise')
-}
 var net = require('net');
 var path = require('path');
 var vscode_lc = require('vscode-languageclient');
