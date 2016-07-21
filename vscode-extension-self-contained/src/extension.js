@@ -13,7 +13,7 @@ var spawn = require('child_process').spawn;
 function activate(context) {
     var serverInfo = function () {
         // Connect to the language server via a io channel
-        var jar = context.asAbsolutePath(path.join('src', 'org.xtext.example.mydsl.ide-1.0.0-SNAPSHOT-all.jar'));
+        var jar = context.asAbsolutePath(path.join('src', 'mydsl-full.jar'));
         var child = spawn('java', ['-jar', jar]);
         return Promise.resolve(child);
     };

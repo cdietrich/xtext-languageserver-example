@@ -1,15 +1,10 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
-    }
+plugins {
+	id 'com.github.johnrengelman.shadow' version '1.2.3'
 }
 
-apply plugin: 'com.github.johnrengelman.shadow'
-
 apply plugin: 'application'
+
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 dependencies {
 	compile project(':org.xtext.example.mydsl')
@@ -23,7 +18,7 @@ startScripts {
     applicationName = 'MyDsl Language Server'
 }
 
-task(httpShadowJar, type: com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
+task(httpShadowJar, type: ShadowJar) {
 	manifest.attributes 'Main-Class': 'org.xtext.example.mydsl.ide.RunServer'
 	classifier = "http-all"
 	from(project.convention.getPlugin(JavaPluginConvention).sourceSets.main.output)
@@ -33,6 +28,9 @@ task(httpShadowJar, type: com.github.jengelman.gradle.plugins.shadow.tasks.Shado
 
 
 shadowJar {
+	baseName = 'mydsl-full'
+	classifier = null
+	version = null
 	destinationDir = file("$projectDir/../../vscode-extension-self-contained/src")
 }
 
