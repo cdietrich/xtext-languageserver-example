@@ -6,5 +6,11 @@ os:
 cache:
   directories:
   - $HOME/.gradle
+env:
+  - NODE_VERSION=6.1
 install:
+  - nvm install $NODE_VERSION
+  - npm install
+script:
+  - nvm use $NODE_VERSION
   - ./gradlew vscodeExtension
