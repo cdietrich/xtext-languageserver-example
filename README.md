@@ -7,9 +7,9 @@ This is an Example showing the Visual Studio Code integration of Xtext using the
 
 ## Quickstart
 
-Requires Visual Studio Code (VS Code) to be on the path as `code`
+Requires Visual Studio Code (VS Code) to be on the path as `code` and Java 8+ available as `java`.
 
-- run `./gradlew startCode`
+- Run `./gradlew startCode`
 
 This will start VS Code and after a few seconds load the `demo` folder of this repository.
 Right now VS Code does not allow a headless installation of extensions (see [#9585](https://github.com/Microsoft/vscode/issues/9585).)
@@ -24,7 +24,9 @@ Right now VS Code does not allow a headless installation of extensions (see [#95
 
 ## Building in Details
 
-1. Run `./gradlew vscodeExtension` to build the DSL and the VS Code extensions.
+1. Make sure that `java -version` is executable and pointing to a Java 8+ JDK.
+2. Type `code`. If the command is not known, open VS Code and select *View / Command Palette*. Enter `code` and select to install `code` on the path.
+1. Run `./gradlew startCode` to build the DSL and the VS Code extensions.
 
 ### Scenario 1 (embedded server)
 
