@@ -69,7 +69,7 @@ configure(subprojects.findAll { it.name.startsWith('vscode') }) {
 		nodeModulesDir = rootProject.projectDir
 	}
 
-	npmInstall.dependsOn ':org.xtext.example.mydsl.ide:shadowJar'
+	npmInstall.dependsOn ':org.xtext.example.mydsl.ide:shadowJars'
 
 	task vscodeExtension(dependsOn: [npmInstall, npmInstallVsce], type: NodeTask) {
 		ext.destDir = new File(buildDir, 'vscode')

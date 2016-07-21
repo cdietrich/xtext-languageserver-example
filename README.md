@@ -7,54 +7,46 @@ This is an Example showing the Visual Studio Code integration of Xtext using the
 
 ## Quickstart
 
-Requires Visual Studio Code (vscode) to be on the path as `code`
+Requires Visual Studio Code (VS Code) to be on the path as `code`
 
 - run `./gradlew startCode`
 
-This will start vscode and after a few seconds load the `demo` folder of this repository.
-Right now vscode does not allow a headless installation of extensions (see [#9585](https://github.com/Microsoft/vscode/issues/9585).)
+This will start VS Code and after a few seconds load the `demo` folder of this repository.
+Right now VS Code does not allow a headless installation of extensions (see [#9585](https://github.com/Microsoft/vscode/issues/9585).)
 
 ## Project Structure
 
-- `vscode-extension` (node based vs code extension to run with a separate server using socket)
-- `vscode-extension-self-contained` (node based vs code extension to run with a embedded server using process io)
+- `vscode-extension` (node based VS Code extension to run with a separate server using socket)
+- `vscode-extension-self-contained` (node based VS Code extension to run with a embedded server using process io)
 - `org.xtext.example.mydsl` (contains the dsl)
-- `org.xtext.example.mydsl.ide` (contains the ide part and the interesting parts)
+- `org.xtext.example.mydsl.ide` (contains the dsl specific customizations of the Xtext language server)
 - `org.xtext.example.mydsl.tests`
 
 ## Building in Details
 
-- run `npm install` inside vscode-extension
-- run `npm install` vscode-extension-self-contained
-- run `./gradlew build shadowJar` inside org.xtext.example.mydsl.parent
-- run `./gradlew run` inside org.xtext.example.mydsl.parent or launch RunServer from Eclipse
-- open `vscode-extension` in VS Code and `F5` to launch new editor (you may need a Debug -> Start Debugging initally)
-- open `demo` in the new editor
+1. Run `./gradlew vscodeExtension` to build the DSL and the VS Code extensions.
 
-## Build VS Code Extension Package
+### Scenario 1 (embedded server)
 
-- `npm install -g vsce`
-- `cd vscode-extension`
-- `vsce package`
-- `cd ../vscode-extension-self-contained`
-- `vsce package`
+1. Install the self-contained extension into VS Code using
+    `code vscode-extension-self-contained/build/vscode/vscode-extension-self-contained-0.0.1.vsix`
+2. Run a second instance of vscode on the demo folder `code demo`
 
-## Installing to VS Code
+Note that there is currently no headless installation of vsix files - this is why we need to start the first instance.
 
-- `code mydsl-0.0.1.vsix` (in vscode-extension)
-- this requires a separate server started via fat jar (see below)
-or
-- `code mydsl-sc-0.0.1.vsix` (in vscode-extension-self-contained)
-- this is selfcontained
+### Scenario 2 (client-only with separate server process)
 
-File Open inside VS Code does basically the same.
+1. Run `./gradlew run` or launch RunServer from Eclipse.
+2. Open `vscode-extension` in VS Code and `F5` to launch new editor (you may need a Debug -> Start Debugging initally).
+1. Open folder `demo` in the new editor.
 
-## Building FAT Jar
 
-- `org.xtext.example.mydsl.ide/`
-- `gradle shadowJar`
+### Build VS Code Extension Package manually (manually Gradle)
 
-## Run separate Server from FAT Jar
-- `cd org.xtext.example.mydsl.ide/`
-- `java -jar build/libs/org.xtext.example.mydsl.ide-1.0.0-SNAPSHOT-http-all.jar`
-
+```
+npm install -g vsce
+cd vscode-extension
+vsce package
+cd ../vscode-extension-self-contained
+vsce package
+```
