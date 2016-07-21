@@ -31,7 +31,7 @@ shadowJar {
 	baseName = 'mydsl-full'
 	classifier = null
 	version = null
-	destinationDir = file("$projectDir/../../vscode-extension-self-contained/src")
+	destinationDir = file("$projectDir/../vscode-extension-self-contained/src")
 }
 
 tasks.shadowJar.dependsOn httpShadowJar

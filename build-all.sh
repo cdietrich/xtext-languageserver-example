@@ -1,5 +1,5 @@
 #!/bin/sh
-(cd org.xtext.example.mydsl.parent && ./gradlew build && cd org.xtext.example.mydsl.ide && ../gradlew shadowJar)
+./gradlew clean build shadowJar
 npm install -g vsce
 (cd vscode-extension && npm install && vsce package)
 (cd vscode-extension-self-contained && npm install && vsce package)
