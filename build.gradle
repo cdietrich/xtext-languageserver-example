@@ -24,7 +24,6 @@ configure(subprojects.findAll { it.name.startsWith('org.xtext') }) {
 	ext.xtextVersion = '2.11.0-SNAPSHOT'
 	repositories {
 		jcenter()
-		mavenLocal()
 		maven { url 'http://services.typefox.io/open-source/jenkins/job/lsapi/lastStableBuild/artifact/build/maven-repository/' }
 		maven { url 'http://services.typefox.io/open-source/jenkins/job/xtext-lib/job/master/lastStableBuild/artifact/build/maven-repository/' }
 		maven { url 'http://services.typefox.io/open-source/jenkins/job/xtext-core/job/master/lastStableBuild/artifact/build/maven-repository/' }
@@ -65,10 +64,6 @@ configure(subprojects.findAll { it.name.startsWith('vscode') }) {
 
 	apply plugin: 'com.moowork.node'
 
-	node {
-		nodeModulesDir = rootProject.projectDir
-	}
-
 	npmInstall.dependsOn ':org.xtext.example.mydsl.ide:shadowJars'
 
 	task vscodeExtension(dependsOn: [npmInstall, npmInstallVsce], type: NodeTask) {
@@ -90,4 +85,11 @@ configure(subprojects.findAll { it.name.startsWith('vscode') }) {
 		delete vscodeExtension.destDir
 	}
 
+}
+
+plugins.withType(com.moowork.gradle.node.NodePlugin) {
+	node {
+		workDir = file("$rootProject.buildDir/nodejs")
+		nodeModulesDir = rootProject.projectDir
+	}
 }
