@@ -6,6 +6,10 @@
     "publisher": "itemis",
     "icon": "images/itemis.png",
     "license": "EPL-1.0",
+    "repository" : { 
+        "type" : "git",
+        "url" : "https://github.com/itemis/xtext-languageserver-example.git"
+    },
     "engines": {
         "vscode": "^1.2.0"
     },
