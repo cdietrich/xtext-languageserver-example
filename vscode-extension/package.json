@@ -2,7 +2,7 @@
     "name": "mydsl",
     "displayName": "MyDsl",
     "description": "MyDsl Language",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "publisher": "itemis",
     "icon": "images/itemis.png",
     "license": "EPL-1.0",
