@@ -10,6 +10,9 @@
         "type" : "git",
         "url" : "https://github.com/itemis/xtext-languageserver-example.git"
     },
+    "bugs": {
+        "url": "https://github.com/itemis/xtext-languageserver-example/issues"
+    },
     "engines": {
         "vscode": "^1.2.0"
     },
