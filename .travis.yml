@@ -13,6 +13,6 @@ install:
   - npm install
 script:
   - nvm use $NODE_VERSION
-  - ./gradlew vscodeExtension
+  - ./gradlew vscodeExtension --refresh-dependencies
 after_success:
   - ./.travis-publishOnRelease.sh

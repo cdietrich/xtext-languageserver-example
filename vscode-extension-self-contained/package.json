@@ -2,7 +2,7 @@
     "name": "xtext-vscode-example",
     "displayName": "Xtext VS Code example",
     "description": "A simple dsl example for VS Code",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "publisher": "itemis",
     "icon": "images/itemis.png",
     "license": "EPL-1.0",

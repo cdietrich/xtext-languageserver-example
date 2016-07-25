@@ -15,6 +15,12 @@ function activate(context) {
         // Connect to the language server via a io channel
         var jar = context.asAbsolutePath(path.join('src', 'mydsl-full.jar'));
         var child = spawn('java', ['-jar', jar]);
+        child.stdout.on('data', function (chunk) {
+            console.log(chunk.toString());
+        });
+        child.stderr.on('data', function (chunk) {
+            console.error(chunk.toString());
+        });
         return Promise.resolve(child);
     };
     var clientOptions = {
