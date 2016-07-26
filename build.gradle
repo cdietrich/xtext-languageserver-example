@@ -10,6 +10,7 @@ buildscript {
 
 plugins {
 	id 'com.moowork.node' version '0.13'
+	id 'net.researchgate.release' version '2.4.0'
 }
 
 node {
@@ -92,4 +93,40 @@ plugins.withType(com.moowork.gradle.node.NodePlugin) {
 		workDir = file("$rootProject.buildDir/nodejs")
 		nodeModulesDir = rootProject.projectDir
 	}
+}
+
+task updateVersions << {
+    def versionPattern = /\d+.\d+(.\d+)?/
+    def encoding = 'UTF-8'
+    def filesToUpdate = [
+		new File('vscode-extension', 'package.json'),
+		new File('vscode-extension-self-contained', 'package.json')
+	]
+
+    // String replacements - isn't long enough to justify advanced code ;)
+	filesToUpdate.forEach { file ->
+		String text = file.getText(encoding)
+		text = text.replaceAll("\"version\": \"$versionPattern\",", "\"version\": \"$project.version\",")
+		file.setText(text, encoding)
+	}
+}
+
+updateVersions.shouldRunAfter tasks.getByName('confirmReleaseVersion')
+
+/*
+ * Configure release plugin.
+ * Remove tasks "updateVersion" and "commitNewVersion" as we don't need to increment the
+ * version to a SNAPSHOT before the next release.
+ */
+tasks.release.tasks -= ["updateVersion", "commitNewVersion"]
+release {
+    preTagCommitMessage = '[release] '
+    tagCommitMessage = '[release] '
+    tagTemplate = 'v${version}'
+}
+tasks.getByName('preTagCommit').dependsOn updateVersions
+
+// Workaround for issue https://github.com/researchgate/gradle-release/issues/144
+task build {
+	dependsOn subprojects.findResults { it.tasks.findByName('build') }
 }
