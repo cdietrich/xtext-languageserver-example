@@ -111,21 +111,15 @@ task updateVersions << {
 	}
 }
 
-updateVersions.shouldRunAfter tasks.getByName('confirmReleaseVersion')
-
-/*
- * Configure release plugin.
- * Remove tasks "updateVersion" and "commitNewVersion" as we don't need to increment the
- * version to a SNAPSHOT before the next release.
- */
-tasks.release.tasks -= ["updateVersion", "commitNewVersion"]
 release {
-    preTagCommitMessage = '[release] '
-    tagCommitMessage = '[release] '
     tagTemplate = 'v${version}'
+	preTagCommitMessage = '[release] pre tag commit: '
+    tagCommitMessage = '[release] creating tag: '
+    newVersionCommitMessage = '[release] new version commit: '
     failOnSnapshotDependencies = false
 }
-tasks.getByName('preTagCommit').dependsOn updateVersions
+updateVersions.shouldRunAfter tasks.getByName('confirmReleaseVersion')
+tasks.getByName('commitNewVersion').dependsOn updateVersions
 
 // Workaround for issue https://github.com/researchgate/gradle-release/issues/144
 task build {
