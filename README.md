@@ -7,7 +7,7 @@ This is an Example showing the Visual Studio Code integration of Xtext using the
 
 ## Quickstart
 
-Requires Visual Studio Code (VS Code) to be on the path as `code` and Java 8+ available as `java`.
+Requires Visual Studio Code (VS Code) with version 1.4.0 or greater to be on the path as `code` and Java 8+ available as `java`.
 
 - Run `./gradlew startCode`
 
