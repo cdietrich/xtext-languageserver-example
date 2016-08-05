@@ -123,6 +123,7 @@ release {
     preTagCommitMessage = '[release] '
     tagCommitMessage = '[release] '
     tagTemplate = 'v${version}'
+    failOnSnapshotDependencies = false
 }
 tasks.getByName('preTagCommit').dependsOn updateVersions
 
