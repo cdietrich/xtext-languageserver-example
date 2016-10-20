@@ -7,7 +7,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 import io.typefox.lsapi.services.LanguageServer;
-import io.typefox.lsapi.services.json.LanguageServerLauncher;
+import io.typefox.lsapi.services.launch.LanguageServerLauncher;
 
 /**
  * @author dietrich - Initial contribution and API
