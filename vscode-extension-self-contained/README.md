@@ -32,9 +32,10 @@ The Xtext integration supports typical Xtext and Language Server features like
 
 * Syntax Highlighting
 * Validation
-* Cross References
-* Tooltips
-* Formatter
+* Goto Definition / Find References
+* Hover
+* Formatting
 * Mark Occurrences
+* Open Symbol
 
 A introductory article can be found [here](https://blogs.itemis.com/en/integrating-xtext-language-support-in-visual-studio-code)

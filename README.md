@@ -1,6 +1,6 @@
 # Xtext Visual Studio Code Example
 
-This is an Example showing the Visual Studio Code integration of Xtext using the Microsoft Language Server Protocol.
+This is an [Example](https://github.com/itemis/xtext-languageserver-example/blob/master/vscode-extension-self-contained/README.md) showing the Visual Studio Code Integration of Xtext using the Microsoft Language Server Protocol.
 
 
 [![Build Status](https://travis-ci.org/itemis/xtext-languageserver-example.svg?branch=master)](https://travis-ci.org/itemis/xtext-languageserver-example)
