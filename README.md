@@ -12,7 +12,6 @@ Requires Visual Studio Code (VS Code) with version 1.4.0 or greater to be on the
 - Run `./gradlew startCode`
 
 This will start VS Code and after a few seconds load the `demo` folder of this repository.
-Right now VS Code does not allow a headless installation of extensions (see [#9585](https://github.com/Microsoft/vscode/issues/9585).)
 
 ## Project Structure
 
