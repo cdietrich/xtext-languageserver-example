@@ -30,10 +30,8 @@ This will start VS Code and after a few seconds load the `demo` folder of this r
 ### Scenario 1 (embedded server)
 
 1. Install the self-contained extension into VS Code using
-    `code vscode-extension-self-contained/build/vscode/vscode-extension-self-contained-0.0.1.vsix`
+    `code --install-extension vscode-extension-self-contained/build/vscode/vscode-extension-self-contained-0.0.1.vsix`
 2. Run a second instance of vscode on the demo folder `code demo`
-
-Note that there is currently no headless installation of vsix files - this is why we need to start the first instance.
 
 ### Scenario 2 (client-only with separate server process)
 
