@@ -1,3 +1,16 @@
+task copyApplication(type: Sync) {
+    def installDistTask = project(':org.xtext.example.mydsl.ide').tasks.installDist
+    dependsOn installDistTask
+    from installDistTask.outputs
+    into 'src/mydsl'
+}
+
+clean << {
+	delete copyApplication.outputs
+}
+
+npmInstall.dependsOn copyApplication
+
 task installExtension(type: Exec, dependsOn: vscodeExtension) {
     commandLine 'code'
     args '--install-extension', vscodeExtension.destPath

@@ -7,12 +7,12 @@ import { workspace, ExtensionContext } from 'vscode';
 import { LanguageClient, LanguageClientOptions, ServerOptions } from 'vscode-languageclient';
 
 export function activate(context: ExtensionContext) {
-    // The server is a locally installed self contained jar
-    let jar = context.asAbsolutePath(path.join('src', 'mydsl-full.jar'));
+    // The server is a locally installed in src/mydsl
+    let script = context.asAbsolutePath(path.join('src', 'mydsl', 'bin', 'mydsl-standalone'));
     
     let serverOptions: ServerOptions = {
-        run : { command: "java", args:['-jar', jar] },
-        debug: { command: "java", args: ['-Xdebug','-Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=n,quiet=y','-Xmx256m','-jar', jar] }
+        run : { command: script },
+        debug: { command: script, args: ['-Xdebug','-Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=n,quiet=y','-Xmx256m'] }
     };
     
     let clientOptions: LanguageClientOptions = {
