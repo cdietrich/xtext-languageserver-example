@@ -14,7 +14,7 @@
         "url": "https://github.com/itemis/xtext-languageserver-example/issues"
     },
     "engines": {
-        "vscode": "^1.6.0"
+        "vscode": "^1.7.0"
     },
     "categories": [
         "Languages"
@@ -50,9 +50,9 @@
         "@types/node": "^6.0.42"
     },
     "dependencies": {
-        "vscode-jsonrpc": "^3.0.0-alpha.2",
-        "vscode-languageserver-types": "^2.0.0-alpha.1",
-        "vscode-languageclient": "^3.0.0-alpha.2"
+        "vscode-jsonrpc": "^3.0.1-alpha.3",
+        "vscode-languageserver-types": "^3.0.1-alpha.5",
+        "vscode-languageclient": "^3.0.1-alpha.7"
     },
     "scripts": {
         "prepublish": "node ./node_modules/vscode/bin/install && tsc -p ./src",
