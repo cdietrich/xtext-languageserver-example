@@ -1,6 +1,7 @@
 'use strict';
 
 import * as path from 'path';
+import * as os from 'os';
 
 import {Trace} from 'vscode-jsonrpc';
 import { workspace, ExtensionContext } from 'vscode';
@@ -8,7 +9,8 @@ import { LanguageClient, LanguageClientOptions, ServerOptions } from 'vscode-lan
 
 export function activate(context: ExtensionContext) {
     // The server is a locally installed in src/mydsl
-    let script = context.asAbsolutePath(path.join('src', 'mydsl', 'bin', 'mydsl-standalone'));
+    let launcher = os.platform() === 'win32' ? 'mydsl-standalone.bat' : 'mydsl-standalone';
+    let script = context.asAbsolutePath(path.join('src', 'mydsl', 'bin', launcher));
     
     let serverOptions: ServerOptions = {
         run : { command: script },
