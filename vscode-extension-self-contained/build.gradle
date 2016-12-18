@@ -5,19 +5,29 @@ task copyApplication(type: Sync) {
     into 'src/mydsl'
 }
 
-clean << {
-	delete copyApplication.outputs
+clean {
+    doLast {
+        delete copyApplication.outputs
+    }
 }
 
 npmInstall.dependsOn copyApplication
 
 task installExtension(type: Exec, dependsOn: vscodeExtension) {
-    commandLine 'code'
+    if (System.properties['os.name'].toLowerCase().contains('windows')) {
+        commandLine 'code.cmd'
+    } else {
+        commandLine 'code'
+    }
     args '--install-extension', vscodeExtension.destPath
 }
 
 task startCode(type:Exec, dependsOn: installExtension) {
-    commandLine 'code'
+    if (System.properties['os.name'].toLowerCase().contains('windows')) {
+        commandLine 'code.cmd'
+    } else {
+        commandLine 'code'
+    }
     args "$rootProject.projectDir/demo/", '--new-window'
 }
 

@@ -96,9 +96,12 @@ configure(subprojects.findAll { it.name.startsWith('vscode') }) {
 		}
 	}
 
-	task clean << {
-		delete vscodeExtension.destDir
-		delete 'out' // output of npmInstall - don't want to delete node_modules
+	task clean {
+		doLast {
+			delete vscodeExtension.destDir
+			delete 'out' // output of npmInstall - don't want to delete node_modules
+		}
+		
 	}
 
 }
@@ -110,19 +113,21 @@ plugins.withType(com.moowork.gradle.node.NodePlugin) {
 	}
 }
 
-task updateVersions << {
-    def versionPattern = /\d+.\d+(.\d+)?/
-    def encoding = 'UTF-8'
-    def filesToUpdate = [
-		new File('vscode-extension', 'package.json'),
-		new File('vscode-extension-self-contained', 'package.json')
-	]
+task updateVersions {
+	doLast {
+		def versionPattern = /\d+.\d+(.\d+)?/
+	    def encoding = 'UTF-8'
+	    def filesToUpdate = [
+			new File('vscode-extension', 'package.json'),
+			new File('vscode-extension-self-contained', 'package.json')
+		]
 
-    // String replacements - isn't long enough to justify advanced code ;)
-	filesToUpdate.forEach { file ->
-		String text = file.getText(encoding)
-		text = text.replaceAll("\"version\": \"$versionPattern\",", "\"version\": \"$project.version\",")
-		file.setText(text, encoding)
+	    // String replacements - isn't long enough to justify advanced code ;)
+		filesToUpdate.forEach { file ->
+			String text = file.getText(encoding)
+			text = text.replaceAll("\"version\": \"$versionPattern\",", "\"version\": \"$project.version\",")
+			file.setText(text, encoding)
+		}
 	}
 }
 
