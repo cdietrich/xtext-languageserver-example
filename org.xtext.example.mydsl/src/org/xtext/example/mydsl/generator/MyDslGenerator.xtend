@@ -23,7 +23,7 @@ class MyDslGenerator extends AbstractGenerator {
             
             public static void main(String[] args) {
                 «FOR g : resource.allContents.filter(Greeting).toIterable»
-                    System.out.println("Hello «g.name» «IF g.from != null» from «g.from.name»«ENDIF»!");
+                    System.out.println("Hello «g.name» «IF g.from !== null» from «g.from.name»«ENDIF»!");
                 «ENDFOR»
             }
             

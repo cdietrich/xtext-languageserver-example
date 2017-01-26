@@ -18,7 +18,7 @@ class MyDslFormatter extends AbstractFormatter2 {
 
 	def dispatch void format(Greeting model, extension IFormattableDocument document) {
 		model.prepend[newLines = 2]
-		if (model.from != null) {
+		if (model.from !== null) {
 			model.regionFor.keyword("from").prepend[newLine]
 			interior(model.regionFor.keyword("from").previousSemanticRegion, model.regionFor.keyword("!"))[indent]
 		}
