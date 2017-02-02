@@ -1,5 +1,6 @@
 include 'org.xtext.example.mydsl'
 include 'org.xtext.example.mydsl.ide'
+include 'org.xtext.example.mydsl.websockets'
 include 'org.xtext.example.mydsl.tests'
 include 'vscode-extension'
 include 'vscode-extension-self-contained'

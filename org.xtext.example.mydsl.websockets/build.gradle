@@ -1,0 +1,16 @@
+apply plugin: 'application'
+
+dependencies {
+	compile project(':org.xtext.example.mydsl')
+	compile project(':org.xtext.example.mydsl.ide')
+	compile "org.eclipse.xtext:org.eclipse.xtext.ide:${xtextVersion}"
+	compile "org.eclipse.xtext:org.eclipse.xtext.xbase.ide:${xtextVersion}"
+	compile "org.slf4j:slf4j-api:1.7.22"
+	compile "org.slf4j:slf4j-simple:1.6.1"
+}
+
+// Add a start script for the websocket case
+mainClassName = 'org.xtext.example.mydsl.websockets.RunServer'
+startScripts {
+	applicationName = 'mydsl-websocket'
+}
