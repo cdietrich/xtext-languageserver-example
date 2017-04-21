@@ -3,9 +3,14 @@
  */
 package org.xtext.example.mydsl.ide
 
+import org.eclipse.xtext.ide.server.hover.HoverService
 
 /**
  * Use this class to register ide components.
  */
 class MyDslIdeModule extends AbstractMyDslIdeModule {
+	
+	def Class<? extends HoverService> bindHoverService() {
+		EclipseLikeHoverService
+	}
 }
