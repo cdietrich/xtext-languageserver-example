@@ -22,7 +22,7 @@ node {
 // Configuration for Xtext projects
 configure(subprojects.findAll { it.name.startsWith('org.xtext') }) {
 
-	ext.xtextVersion = '2.12.0-SNAPSHOT'
+	ext.xtextVersion = '2.12.0'
 	repositories {
 		maven { url 'http://services.typefox.io/open-source/jenkins/job/lsp4j/job/master/lastSuccessfulBuild/artifact/build/maven-repository/' }
 		maven { url 'http://services.typefox.io/open-source/jenkins/job/lsp4j/job/master/lastSuccessfulBuild/artifact/build/maven-repository/' }
