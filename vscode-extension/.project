@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>org.xtext.example.mydsl.vscode-extension</name>
+	<name>vscode-extension</name>
 	<comment></comment>
 	<projects>
 	</projects>
