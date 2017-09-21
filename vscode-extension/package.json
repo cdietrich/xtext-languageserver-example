@@ -6,15 +6,15 @@
     "publisher": "itemis",
     "icon": "images/itemis.png",
     "license": "EPL-1.0",
-    "repository" : { 
-        "type" : "git",
-        "url" : "https://github.com/itemis/xtext-languageserver-example.git"
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/itemis/xtext-languageserver-example.git"
     },
     "bugs": {
         "url": "https://github.com/itemis/xtext-languageserver-example/issues"
     },
     "engines": {
-        "vscode": "^1.11.0"
+        "vscode": "^1.16.0"
     },
     "categories": [
         "Languages"
@@ -45,14 +45,12 @@
         ]
     },
     "devDependencies": {
-        "typescript": "^2.1.5",
-        "vscode": "^1.1.0",
-        "@types/node": "^7.0.13"
+        "vscode": "^1.1.5",
+        "typescript": "^2.5.2",
+        "@types/node": "^6.0.88"
     },
     "dependencies": {
-        "vscode-jsonrpc": "^3.2.0",
-        "vscode-languageserver-types": "^3.2.0",
-        "vscode-languageclient": "^3.2.0"
+        "vscode-languageclient": "^3.4.1"
     },
     "scripts": {
         "prepublish": "node ./node_modules/vscode/bin/install && tsc -p ./src",
