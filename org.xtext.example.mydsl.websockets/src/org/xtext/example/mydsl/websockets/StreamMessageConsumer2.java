@@ -51,7 +51,7 @@ public class StreamMessageConsumer2 implements MessageConsumer, MessageConstants
         try {
 	        String content = jsonHandler.serialize(message);
 	        byte[] contentBytes = content.getBytes(encoding);
-	        int contentLength = contentBytes.length;
+	        int contentLength = content.length();
 	        
 	        String header = getHeader(contentLength);
 	        byte[] headerBytes = header.getBytes(StandardCharsets.US_ASCII);

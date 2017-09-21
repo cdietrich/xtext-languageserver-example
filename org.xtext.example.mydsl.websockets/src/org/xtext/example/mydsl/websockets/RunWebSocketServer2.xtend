@@ -71,7 +71,7 @@ import org.eclipse.xtext.util.internal.Log
 		def static package <T> Launcher<T> createSocketLauncher(Object localService, Class<T> remoteInterface,
 			ExecutorService executorService, Function<MessageConsumer, MessageConsumer> wrapper,
 			InputStream inputStream, OutputStream outputStream) throws IOException {
-			return Launcher.createIoLauncher(localService, remoteInterface, inputStream, outputStream, executorService,
+			return createIoLauncher(localService, remoteInterface, inputStream, outputStream, executorService,
 				wrapper)
 		}
 
