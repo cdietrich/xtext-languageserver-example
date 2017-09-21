@@ -51,7 +51,10 @@ public class StreamMessageConsumer2 implements MessageConsumer, MessageConstants
         try {
 	        String content = jsonHandler.serialize(message);
 	        byte[] contentBytes = content.getBytes(encoding);
-	        int contentLength = content.length();
+	        int contentLength = contentBytes.length;
+	        if (output instanceof WebSocketServerOutputStream) {
+	        		contentLength = content.length();
+	        }
 	        
 	        String header = getHeader(contentLength);
 	        byte[] headerBytes = header.getBytes(StandardCharsets.US_ASCII);
