@@ -6,7 +6,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath 'org.xtext:xtext-gradle-plugin:1.0.15'
+		classpath 'org.xtext:xtext-gradle-plugin:1.0.19'
 		classpath 'com.moowork.gradle:gradle-node-plugin:1.2.0'
 		classpath 'net.researchgate:gradle-release:2.4.0'
 	}
@@ -24,14 +24,8 @@ node {
 // Configuration for Xtext projects
 configure(subprojects.findAll { it.name.startsWith('org.xtext') }) {
 
-	ext.xtextVersion = '2.12.0'
+	ext.xtextVersion = '2.13.0'
 	repositories {
-		maven { url 'http://services.typefox.io/open-source/jenkins/job/lsp4j/job/master/lastSuccessfulBuild/artifact/build/maven-repository/' }
-		maven { url 'http://services.typefox.io/open-source/jenkins/job/lsp4j/job/master/lastSuccessfulBuild/artifact/build/maven-repository/' }
-		maven { url 'http://services.typefox.io/open-source/jenkins/job/xtext-lib/job/master/lastStableBuild/artifact/build/maven-repository/' }
-		maven { url 'http://services.typefox.io/open-source/jenkins/job/xtext-core/job/master/lastStableBuild/artifact/build/maven-repository/' }
-		maven { url 'http://services.typefox.io/open-source/jenkins/job/xtext-extras/job/master/lastStableBuild/artifact/build/maven-repository/' }
-		maven { url 'http://services.typefox.io/open-source/jenkins/job/xtext-xtend/job/master/lastStableBuild/artifact/build/maven-repository/' }
 		maven {
 			url 'https://oss.sonatype.org/content/repositories/snapshots'
 		}
