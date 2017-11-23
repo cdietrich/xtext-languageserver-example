@@ -3,6 +3,7 @@
  */
 package org.xtext.example.mydsl.ide
 
+import org.eclipse.xtext.ide.server.commands.IExecutableCommandService
 import org.eclipse.xtext.ide.server.hover.HoverService
 
 /**
@@ -12,5 +13,9 @@ class MyDslIdeModule extends AbstractMyDslIdeModule {
 	
 	def Class<? extends HoverService> bindHoverService() {
 		EclipseLikeHoverService
+	}
+	
+	def Class<? extends IExecutableCommandService> bindIExecutableCommandService() {
+		return CommandService
 	}
 }
