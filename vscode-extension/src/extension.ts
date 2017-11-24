@@ -3,7 +3,7 @@
 import * as net from 'net';
 
 import {Trace} from 'vscode-jsonrpc';
-import { window,workspace, commands, ExtensionContext, Uri } from 'vscode';
+import { window, workspace, commands, ExtensionContext, Uri } from 'vscode';
 import { LanguageClient, LanguageClientOptions, StreamInfo, Position as LSPosition, Location as LSLocation } from 'vscode-languageclient';
 
 export function activate(context: ExtensionContext) {
