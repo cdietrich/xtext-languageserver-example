@@ -6,6 +6,7 @@ package org.xtext.example.mydsl.ide
 import com.google.inject.Guice
 import org.xtext.example.mydsl.MyDslRuntimeModule
 import org.xtext.example.mydsl.MyDslStandaloneSetup
+import org.eclipse.xtext.util.Modules2
 
 /**
  * Initialization support for running Xtext languages without Equinox extension registry.
@@ -13,6 +14,6 @@ import org.xtext.example.mydsl.MyDslStandaloneSetup
 class MyDslIdeSetup extends MyDslStandaloneSetup {
 
 	override createInjector() {
-		Guice.createInjector(new MyDslRuntimeModule, new MyDslIdeModule)
+		Guice.createInjector(Modules2.mixin(new MyDslRuntimeModule, new MyDslIdeModule))
 	}
 }
