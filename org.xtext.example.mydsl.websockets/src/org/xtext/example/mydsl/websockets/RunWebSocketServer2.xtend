@@ -89,7 +89,7 @@ import org.eclipse.xtext.util.internal.Log
 			var MessageJsonHandler jsonHandler = new MessageJsonHandler(supportedMethods)
 			var MessageConsumer outGoingMessageStream = new StreamMessageConsumer2(out, jsonHandler)
 			outGoingMessageStream = wrapper.apply(outGoingMessageStream)
-			var RemoteEndpoint serverEndpoint = new RemoteEndpoint(outGoingMessageStream,
+			val RemoteEndpoint serverEndpoint = new RemoteEndpoint(outGoingMessageStream,
 				ServiceEndpoints.toEndpoint(localService))
 			jsonHandler.setMethodProvider(serverEndpoint)
 			// wrap incoming message stream
@@ -97,13 +97,18 @@ import org.eclipse.xtext.util.internal.Log
 			val StreamMessageProducer reader = new StreamMessageProducer(in, jsonHandler)
 			val T remoteProxy2 = ServiceEndpoints.toServiceObject(serverEndpoint, remoteInterface)
 			return new Launcher<T>() {
-				override Future<?> startListening() {
+				override Future<Void> startListening() {
 					return ConcurrentMessageProcessor.startProcessing(reader, messageConsumer, executorService)
 				}
 
 				override T getRemoteProxy() {
 					return remoteProxy2
 				}
+				
+				override RemoteEndpoint getRemoteEndpoint() {
+					return serverEndpoint;
+				}
+				
 			}
 		}
 
