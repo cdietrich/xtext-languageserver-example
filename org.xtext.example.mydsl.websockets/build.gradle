@@ -7,6 +7,7 @@ dependencies {
 	compile "org.eclipse.xtext:org.eclipse.xtext.xbase.ide:${xtextVersion}"
 	compile "org.slf4j:slf4j-api:1.7.22"
 	compile "org.slf4j:slf4j-simple:1.6.1"
+	compile "org.java-websocket:Java-WebSocket:1.3.8"
 }
 
 // Add a start script for the websocket case
