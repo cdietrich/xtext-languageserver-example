@@ -7,7 +7,7 @@ cache:
   directories:
   - $HOME/.gradle
 env:
-  - NODE_VERSION=6.1
+  - NODE_VERSION=10.7
 install:
   - nvm install $NODE_VERSION
   - npm install
