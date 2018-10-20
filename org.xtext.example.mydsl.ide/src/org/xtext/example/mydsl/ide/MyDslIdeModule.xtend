@@ -3,6 +3,7 @@
  */
 package org.xtext.example.mydsl.ide
 
+import org.eclipse.xtext.ide.server.codeActions.ICodeActionService
 import org.eclipse.xtext.ide.server.commands.IExecutableCommandService
 import org.eclipse.xtext.ide.server.contentassist.ContentAssistService
 import org.eclipse.xtext.ide.server.hover.HoverService
@@ -19,6 +20,10 @@ class MyDslIdeModule extends AbstractMyDslIdeModule {
 	
 	def Class<? extends IExecutableCommandService> bindIExecutableCommandService() {
 		return CommandService
+	}
+	
+	def Class<? extends ICodeActionService> bindICodeActionService() {
+		return MyDslCodeActionService
 	}
 	
 	// workaround for https://github.com/eclipse/xtext-eclipse/issues/834
