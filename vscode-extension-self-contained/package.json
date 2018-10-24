@@ -17,7 +17,7 @@
         "vscode": "^1.28.0"
     },
     "categories": [
-        "Languages"
+        "Programming Languages"
     ],
     "activationEvents": [
         "onLanguage:mydsl"
