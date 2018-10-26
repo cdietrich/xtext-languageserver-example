@@ -1,0 +1,13 @@
+'scopeName': 'source.mydsl'
+'name': 'MyDslFiles'
+'fileTypes': [
+  'mydsl'
+]
+injections:
+  'L:*':
+    patterns: [
+        {
+            match: '\\b(Hello|from)\\b'
+            name: 'keyword.control.mydsl'
+        }
+    ]
