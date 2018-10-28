@@ -1,8 +1,8 @@
 {
-  "name": "ide-mydsl",
+  "name": "ide-xtext-mydsl",
   "main": "./lib/main",
-  "version": "0.0.1",
-  "description": "MyDsl language support for Atom-IDE.",
+  "version": "0.0.17",
+  "description": "MyDsl language support for Atom-IDE. Demonstrates Xtext Integration in Atom.",
   "publisher": "itemis",
   "icon": "images/itemis.png",
   "license": "EPL-1.0",
