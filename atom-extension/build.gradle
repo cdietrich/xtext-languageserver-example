@@ -1,0 +1,32 @@
+evaluationDependsOn(':org.xtext.example.mydsl.ide')
+
+task copyApplication(type: Sync) {
+    from tasks.getByPath(':org.xtext.example.mydsl.ide:installDist').outputs
+    into 'lib/mydsl'
+}
+
+apply plugin: 'base'
+apply plugin: 'com.moowork.node'
+node {
+    version = '6.11.3'
+    npmVersion = '3.10.10'
+    download = true
+}
+
+def inputFiles = fileTree(
+	dir: projectDir, 
+	excludes: [ 'out/**', '.gitignore', '.gradle/**', 'build/**', '*.gradle' ]
+)
+
+npmInstall {
+	inputs.files(inputFiles)
+	outputs.dir('out')
+}
+
+clean {
+    doLast {
+        delete copyApplication.outputs
+    }
+}
+
+npmInstall.dependsOn copyApplication
