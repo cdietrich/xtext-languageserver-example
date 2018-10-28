@@ -43,7 +43,7 @@ This will start VS Code and after a few seconds load the `demo` folder of this r
 ### Build VS Code Extension Package manually (manually Gradle)
 
 ```
-npm install vsce
+npm install -g vsce
 cd vscode-extension
 vsce package
 cd ../vscode-extension-self-contained
