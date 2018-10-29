@@ -30,3 +30,7 @@ clean {
 }
 
 npmInstall.dependsOn copyApplication
+
+task atomExtension {
+    dependsOn npmInstall
+}
