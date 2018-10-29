@@ -11,10 +11,10 @@ export function activate(context: ExtensionContext) {
     // The server is a locally installed in src/mydsl
     let launcher = os.platform() === 'win32' ? 'mydsl-standalone.bat' : 'mydsl-standalone';
     let script = context.asAbsolutePath(path.join('src', 'mydsl', 'bin', launcher));
-    
+
     let serverOptions: ServerOptions = {
         run : { command: script },
-        debug: { command: script, args: ['-Xdebug','-Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=n,quiet=y','-Xmx256m'] }
+        debug: { command: script, args: [], options: { env: createDebugEnv() } }
     };
     
     let clientOptions: LanguageClientOptions = {
@@ -46,4 +46,10 @@ export function activate(context: ExtensionContext) {
     // Push the disposable to the context's subscriptions so that the 
     // client can be deactivated on extension deactivation
     context.subscriptions.push(disposable);
+}
+
+function createDebugEnv() {
+    return Object.assign({
+        JAVA_OPTS:"-Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=n,quiet=y"
+    }, process.env)
 }
