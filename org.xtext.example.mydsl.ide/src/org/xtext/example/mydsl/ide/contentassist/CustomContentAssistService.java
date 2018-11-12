@@ -1,6 +1,8 @@
 package org.xtext.example.mydsl.ide.contentassist;
 
 import org.eclipse.lsp4j.CompletionItem;
+import org.eclipse.lsp4j.CompletionItemKind;
+import org.eclipse.lsp4j.InsertTextFormat;
 import org.eclipse.lsp4j.MarkupContent;
 import org.eclipse.lsp4j.Position;
 import org.eclipse.lsp4j.jsonrpc.messages.Either;
@@ -17,6 +19,11 @@ public class CustomContentAssistService extends ContentAssistService {
 		Either<String, MarkupContent> documentation = completionItem.getDocumentation();
 		if (documentation.getLeft() == null && documentation.getRight()==null) {
 			completionItem.setDocumentation((Either<String,MarkupContent>)null);
+			if (completionItem.getKind() == CompletionItemKind.Snippet) {
+				completionItem.setInsertTextFormat(InsertTextFormat.Snippet);
+			} else {
+				completionItem.setInsertTextFormat(InsertTextFormat.PlainText);
+			}
 		}
 		return completionItem;
 	}
