@@ -1,0 +1,44 @@
+{
+    "name": "MyDsl",
+    "scopeName": "text.mydsl",
+    "fileTypes": [
+        "mydsl"
+    ],
+    "repository": {
+        "general": {
+            "patterns": [
+                {
+                    "include": "#linecomment"
+                },
+                {
+                    "include": "#blockcomment"
+                },
+                {
+                    "include": "#keyword"
+                }
+            ]
+        },
+        "linecomment": {
+            "name": "comment.line.double-dash.mydsl",
+            "begin": "(^[ \\t]+)?(?=//)",
+            "end": "(?=$)"
+        },
+        "blockcomment": {
+            "name": "comment.block.mydsl",
+            "begin": "/\\*(\\*)?(?!/)",
+            "end": "\\*/"
+        },
+        
+        "keyword": {
+            "name": "keyword.control.mydsl",
+            "match": "\\b(Hello|from)\\b|!"
+
+        }
+    },
+    "patterns": [
+        {
+            "include": "#general"
+        }
+    ],
+    "uuid": "8383e49a-fa0d-4bb5-827b-10e8abb294ca"
+}
