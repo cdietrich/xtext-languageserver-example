@@ -40,7 +40,7 @@
             {
                 "language": "mydsl",
                 "scopeName": "text.mydsl",
-                "path": "./syntaxes/mydsl.tmLanguage"
+                "path": "./syntaxes/mydsl.tmLanguage.json"
             }
         ],
         "commands": [
