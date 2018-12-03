@@ -28,7 +28,7 @@ import org.eclipse.xtext.ide.server.ServerModule
  */
 class ServerLauncher {
 
-	private static boolean IS_DEBUG = true
+	static boolean IS_DEBUG = true
 
 	def static void main(String[] args) {
 		//IS_DEBUG = args.exists[it == 'debug']

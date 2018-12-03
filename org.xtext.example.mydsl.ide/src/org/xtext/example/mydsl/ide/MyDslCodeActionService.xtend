@@ -4,7 +4,6 @@ import org.eclipse.emf.common.util.URI
 import org.eclipse.lsp4j.CodeAction
 import org.eclipse.lsp4j.CodeActionKind
 import org.eclipse.lsp4j.CodeActionParams
-import org.eclipse.lsp4j.TextDocumentEdit
 import org.eclipse.lsp4j.TextEdit
 import org.eclipse.lsp4j.WorkspaceEdit
 import org.eclipse.lsp4j.jsonrpc.messages.Either
@@ -13,7 +12,6 @@ import org.eclipse.xtext.ide.server.codeActions.ICodeActionService
 import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.util.CancelIndicator
 import org.xtext.example.mydsl.validation.MyDslValidator
-import org.eclipse.lsp4j.Position
 
 class MyDslCodeActionService implements ICodeActionService {
 	

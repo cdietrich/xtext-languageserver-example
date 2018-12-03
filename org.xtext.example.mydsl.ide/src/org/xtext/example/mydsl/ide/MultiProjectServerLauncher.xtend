@@ -18,7 +18,7 @@ import com.google.inject.util.Modules
 
 class MultiProjectServerLauncher {
 	
-	private static boolean IS_DEBUG = false
+	static boolean IS_DEBUG = false
 
 	def static void main(String[] args) {
 		val stdin = System.in
