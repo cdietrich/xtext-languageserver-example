@@ -78,7 +78,7 @@ class MyDslWebSocketServer extends WebSocketServer {
 				var s = new String(toByteArray, StandardCharsets.UTF_8)
 				var i = s.indexOf("\r\n\r\n")
 				if (i > 0) {
-					//s = s.substring(i+4)
+					s = s.substring(i+4)
 				}
 				println(s)
 				conn.send(s)
