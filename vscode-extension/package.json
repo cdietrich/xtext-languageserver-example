@@ -14,7 +14,7 @@
         "url": "https://github.com/itemis/xtext-languageserver-example/issues"
     },
     "engines": {
-        "vscode": "^1.28.0"
+        "vscode": "^1.30.0"
     },
     "categories": [
         "Programming Languages"
@@ -55,7 +55,7 @@
         ]
     },
     "devDependencies": {
-        "vscode": "^1.1.21",
+        "vscode": "^1.1.26",
         "typescript": "^2.9.2",
         "@types/node": "^10.11.5"
     },
