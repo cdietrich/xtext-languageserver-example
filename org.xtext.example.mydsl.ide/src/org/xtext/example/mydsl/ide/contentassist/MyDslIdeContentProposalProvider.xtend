@@ -17,7 +17,7 @@ class MyDslIdeContentProposalProvider extends IdeContentProposalProvider {
 
 	override protected _createProposals(RuleCall ruleCall, ContentAssistContext context,
 		IIdeContentProposalAcceptor acceptor) {
-		if (greetingRule == ruleCall.rule) {
+		if (greetingRule == ruleCall.rule && context.currentModel !== null) {
 			val scope = scopeProvider.getScope(context.currentModel, MyDslPackage.Literals.GREETING__FROM)
 			acceptor.accept(
 				proposalCreator.
