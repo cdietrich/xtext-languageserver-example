@@ -24,7 +24,7 @@ node {
 // Configuration for Xtext projects
 configure(subprojects.findAll { it.name.startsWith('org.xtext') }) {
 
-	ext.xtextVersion = '2.16.0'
+	ext.xtextVersion = '2.17.0.M1'
 	repositories {
 		maven {
 			url 'https://oss.sonatype.org/content/repositories/snapshots'
@@ -33,6 +33,9 @@ configure(subprojects.findAll { it.name.startsWith('org.xtext') }) {
 	}
 	
 	apply plugin: 'java'
+	dependencies {
+		compile platform("org.eclipse.xtext:xtext-dev-bom:${xtextVersion}")
+	}
 	apply plugin: 'org.xtext.xtend'
 	apply from: "${rootDir}/gradle/source-layout.gradle"
 	apply from: "${rootDir}/gradle/maven-deployment.gradle"
