@@ -6,7 +6,7 @@ task copyApplication(type: Sync) {
 }
 
 apply plugin: 'base'
-apply plugin: 'com.moowork.node'
+apply plugin: 'com.github.node-gradle.node'
 node {
     version = '6.11.3'
     npmVersion = '3.10.10'
