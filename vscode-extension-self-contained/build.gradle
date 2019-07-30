@@ -33,7 +33,7 @@ task startCode(type:Exec, dependsOn: installExtension) {
 
 task publish(dependsOn: vscodeExtension, type: NodeTask) {
     script = file("$rootProject.projectDir/node_modules/vsce/out/vsce")
-    args = [ 'publish', '-p', System.getenv('ACCESS_TOKEN'), project.version ]
+    args = [ 'publish', '--allow-same-version', '-p', System.getenv('ACCESS_TOKEN'), project.version ]
     execOverrides {
         workingDir = projectDir
     }
