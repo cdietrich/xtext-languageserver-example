@@ -4,7 +4,7 @@
 package org.xtext.example.mydsl.ide
 
 import org.eclipse.xtext.ide.editor.contentassist.IdeContentProposalProvider
-import org.eclipse.xtext.ide.server.codeActions.ICodeActionService
+import org.eclipse.xtext.ide.server.codeActions.ICodeActionService2
 import org.eclipse.xtext.ide.server.commands.IExecutableCommandService
 import org.eclipse.xtext.ide.server.hover.HoverService
 import org.xtext.example.mydsl.ide.contentassist.MyDslIdeContentProposalProvider
@@ -22,7 +22,7 @@ class MyDslIdeModule extends AbstractMyDslIdeModule {
 		return CommandService
 	}
 	
-	def Class<? extends ICodeActionService> bindICodeActionService() {
+	def Class<? extends ICodeActionService2> bindICodeActionService2() {
 		return MyDslCodeActionService
 	}
 	
