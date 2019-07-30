@@ -119,6 +119,7 @@ plugins.withType(com.moowork.gradle.node.NodePlugin) {
 
 task updateVersions {
 	doLast {
+		println("mimimimi $project.version")
 		def versionPattern = /\d+.\d+(.\d+)?/
 	    def encoding = 'UTF-8'
 	    def filesToUpdate = [
@@ -144,8 +145,8 @@ release {
     newVersionCommitMessage = '[release] new version commit: '
     failOnSnapshotDependencies = false
 }
-updateVersions.shouldRunAfter tasks.getByName('updateVersion')
-commitNewVersion.dependsOn updateVersions
+updateVersions.mustRunAfter updateVersion
+commitNewVersion.mustRunAfter updateVersions
 
 // Workaround for issue https://github.com/researchgate/gradle-release/issues/144
 task build {
