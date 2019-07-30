@@ -129,6 +129,7 @@ task updateVersions {
 
 	    // String replacements - isn't long enough to justify advanced code ;)
 		filesToUpdate.forEach { file ->
+
 			String text = file.getText(encoding)
 			text = text.replaceAll("\"version\": \"$versionPattern\",", "\"version\": \"$project.version\",")
 			file.setText(text, encoding)
@@ -143,7 +144,7 @@ release {
     newVersionCommitMessage = '[release] new version commit: '
     failOnSnapshotDependencies = false
 }
-updateVersions.shouldRunAfter tasks.getByName('confirmReleaseVersion')
+updateVersions.shouldRunAfter tasks.getByName('updateVersion')
 tasks.getByName('commitNewVersion').dependsOn updateVersions
 
 // Workaround for issue https://github.com/researchgate/gradle-release/issues/144
