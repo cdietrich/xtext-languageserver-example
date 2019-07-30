@@ -123,7 +123,7 @@ task updateVersions {
 	    def encoding = 'UTF-8'
 	    def filesToUpdate = [
 			new File('vscode-extension', 'package.json'),
-			new File('vscode-extension-self-contained', 'package.json')
+			new File('vscode-extension-self-contained', 'package.json'),
 			new File('atom-extension', 'package.json')
 		]
 
