@@ -117,26 +117,26 @@ plugins.withType(com.moowork.gradle.node.NodePlugin) {
 	}
 }
 
-task updateVersions {
-	doLast {
-		println("mimimimi $project.version")
-		def versionPattern = /\d+.\d+(.\d+)?/
-	    def encoding = 'UTF-8'
-	    def filesToUpdate = [
-			new File('vscode-extension', 'package.json'),
-			new File('vscode-extension-self-contained', 'package.json'),
-			new File('atom-extension', 'package.json')
-		]
+updateVersion {
+		doLast {
+			// custom code
+			def versionPattern = /\d+.\d+(.\d+)?/
+			def encoding = 'UTF-8'
+			def filesToUpdate = [
+				new File('vscode-extension', 'package.json'),
+				new File('vscode-extension-self-contained', 'package.json'),
+				new File('atom-extension', 'package.json')
+			]
 
-	    // String replacements - isn't long enough to justify advanced code ;)
-		filesToUpdate.forEach { file ->
+			// String replacements - isn't long enough to justify advanced code ;)
+			filesToUpdate.forEach { file ->
 
-			String text = file.getText(encoding)
-			text = text.replaceAll("\"version\": \"$versionPattern\",", "\"version\": \"$project.version\",")
-			file.setText(text, encoding)
+				String text = file.getText(encoding)
+				text = text.replaceAll("\"version\": \"$versionPattern\",", "\"version\": \"$project.version\",")
+				file.setText(text, encoding)
+			}
 		}
 	}
-}
 
 release {
     tagTemplate = 'v${version}'
@@ -145,8 +145,6 @@ release {
     newVersionCommitMessage = '[release] new version commit: '
     failOnSnapshotDependencies = false
 }
-updateVersions.mustRunAfter updateVersion
-commitNewVersion.mustRunAfter updateVersions
 
 // Workaround for issue https://github.com/researchgate/gradle-release/issues/144
 task build {
