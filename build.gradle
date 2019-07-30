@@ -145,7 +145,7 @@ release {
     failOnSnapshotDependencies = false
 }
 updateVersions.shouldRunAfter tasks.getByName('updateVersion')
-tasks.getByName('commitNewVersion').dependsOn updateVersions
+commitNewVersion.dependsOn updateVersions
 
 // Workaround for issue https://github.com/researchgate/gradle-release/issues/144
 task build {
