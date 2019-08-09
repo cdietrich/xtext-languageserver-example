@@ -3,6 +3,7 @@
  */
 package org.xtext.example.mydsl.generator
 
+import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
@@ -17,7 +18,7 @@ import org.xtext.example.mydsl.myDsl.Greeting
 class MyDslGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-        val fileName = resource.URI.trimFileExtension.lastSegment
+        val fileName = URI.decode(resource.URI.trimFileExtension.lastSegment)
         fsa.generateFile(fileName+"Greeter.java", '''
         public class «fileName»Greeter {
             
