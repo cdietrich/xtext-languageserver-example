@@ -28,6 +28,7 @@ configure(subprojects.findAll { it.name.startsWith('org.xtext') }) {
 		maven {
 			url 'https://oss.sonatype.org/content/repositories/snapshots'
 		}
+		mavenCentral()
 		jcenter()
 	}
 	
