@@ -1,5 +1,6 @@
 buildscript {
 	repositories {
+		mavenCentral()
 		jcenter()
 		maven {
 			url "https://plugins.gradle.org/m2/"
@@ -23,11 +24,12 @@ node {
 // Configuration for Xtext projects
 configure(subprojects.findAll { it.name.startsWith('org.xtext') }) {
 
-	ext.xtextVersion = '2.20.0'
+	ext.xtextVersion = '2.21.0'
 	repositories {
 		maven {
 			url 'https://oss.sonatype.org/content/repositories/snapshots'
 		}
+		mavenCentral()
 		jcenter()
 	}
 	

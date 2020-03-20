@@ -26,7 +26,7 @@ class MyDslCodeActionService implements ICodeActionService2 {
 		val resource = options.resource
 		val result = <CodeAction>newArrayList
 		for (d : params.context.diagnostics) {
-			if (d.code == MyDslValidator.INVALID_NAME) {
+			if (d.code.get == MyDslValidator.INVALID_NAME) {
 				val text = document.getSubstring(d.range)
 				result += new CodeAction => [
 					kind = CodeActionKind.QuickFix
