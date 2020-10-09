@@ -49,3 +49,6 @@ vsce package
 cd ../vscode-extension-self-contained
 vsce package
 ```
+
+#### Other Xtext/VSCode versions
+please also check other branches for newer Xtext Versions that also support newer vscode versions
