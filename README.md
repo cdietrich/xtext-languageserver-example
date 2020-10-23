@@ -52,6 +52,5 @@ vsce package
 
 ### Hints
 
-For Other Xtext/VSCode versions please also check other branches for newer Xtext Versions that also support newer vscode versions
-The Theia example is no longer working, you have to either use VScode plugin in Theia (see newer branches) or change to the code to use older theia
+For Other Xtext/VSCode versions please also check other branches for newer/older Xtext Versions that also support newer/older vscode versions
 Atom language client is dead. We plan to update to a fork. See https://github.com/itemis/xtext-languageserver-example/issues/73
