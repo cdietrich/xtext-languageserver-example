@@ -6,7 +6,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath 'org.xtext:xtext-gradle-plugin:2.0.8'
+		classpath 'org.xtext:xtext-gradle-plugin:2.1.0'
 		classpath 'com.github.node-gradle:gradle-node-plugin:2.2.4'
 		classpath 'net.researchgate:gradle-release:2.8.1'
 	}
@@ -22,12 +22,11 @@ node {
 
 // Configuration for Xtext projects
 configure(subprojects.findAll { it.name.startsWith('org.xtext') }) {
-
-	ext.xtextVersion = '2.23.0'
+	ext.xtextVersion = '2.26.0-SNAPSHOT'
 	repositories {
-		// maven {
-		// 	url 'https://oss.sonatype.org/content/repositories/snapshots'
-		// }
+		maven {
+		 	url 'https://oss.sonatype.org/content/repositories/snapshots'
+		}
 		mavenCentral()
 	}
 	
@@ -49,15 +48,6 @@ configure(subprojects.findAll { it.name.startsWith('org.xtext') }) {
 	
 	configurations.all {
 		exclude group: 'asm'
-	}
-
-	configurations.all {
-		if (name.contains("Tooling")) {
-			dependencies {
-				add(name, "org.eclipse.xtend:org.eclipse.xtend.core:${xtextVersion}")
-				add(name, platform("org.eclipse.xtext:xtext-dev-bom:${xtextVersion}"))
-			}
-		}
 	}
 
 }

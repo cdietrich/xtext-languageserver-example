@@ -5,7 +5,7 @@ import * as os from 'os';
 
 import {Trace} from 'vscode-jsonrpc';
 import { commands, window, workspace, ExtensionContext, Uri } from 'vscode';
-import { LanguageClient, LanguageClientOptions, ServerOptions } from 'vscode-languageclient';
+import { LanguageClient, LanguageClientOptions, ServerOptions } from 'vscode-languageclient/node';
 
 export function activate(context: ExtensionContext) {
     // The server is a locally installed in src/mydsl
