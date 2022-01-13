@@ -32,7 +32,7 @@ task startCode(type:Exec, dependsOn: installExtension) {
 }
 
 task publish(dependsOn: vscodeExtension, type: NodeTask) {
-    script = file("$rootProject.projectDir/node_modules/vsce/out/vsce")
+    script = file("$rootProject.projectDir/node_modules/vsce/vsce")
     args = [ 'publish', '-p', System.getenv('ACCESS_TOKEN'), "--packagePath", "${project.buildDir}/vscode/vscode-extension-self-contained-${project.version}.vsix"]
     execOverrides {
         workingDir = projectDir
