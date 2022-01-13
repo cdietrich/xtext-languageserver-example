@@ -3,7 +3,7 @@
 This is an [Example](https://github.com/itemis/xtext-languageserver-example/blob/master/vscode-extension-self-contained/README.md) showing the Visual Studio Code Integration of Xtext using the Microsoft Language Server Protocol.
 
 
-[![Build Status](https://travis-ci.org/itemis/xtext-languageserver-example.svg?branch=master)](https://travis-ci.org/itemis/xtext-languageserver-example)
+![Build Status](https://github.com/itemis/xtext-languageserver-example/actions/workflows/build.yml/badge.svg)
 
 ## Quickstart
 
