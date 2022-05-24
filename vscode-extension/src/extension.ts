@@ -6,6 +6,8 @@ import {Trace} from 'vscode-jsonrpc';
 import { window, workspace, commands, ExtensionContext, Uri } from 'vscode';
 import { LanguageClient, LanguageClientOptions, StreamInfo, Position as LSPosition, Location as LSLocation } from 'vscode-languageclient/node';
 
+let lc: LanguageClient;
+
 export function activate(context: ExtensionContext) {
     // The server is a started as a separate app and listens on port 5007
     let connectionInfo = {
@@ -29,7 +31,7 @@ export function activate(context: ExtensionContext) {
     };
     
     // Create the language client and start the client.
-    let lc = new LanguageClient('Xtext Server', serverOptions, clientOptions);
+    lc = new LanguageClient('Xtext Server', serverOptions, clientOptions);
 
     var disposable2 =commands.registerCommand("mydsl.a.proxy", async () => {
         let activeEditor = window.activeTextEditor;
@@ -45,10 +47,9 @@ export function activate(context: ExtensionContext) {
     context.subscriptions.push(disposable2);
 
     // enable tracing (.Off, .Messages, Verbose)
-    lc.trace = Trace.Verbose;
-    let disposable = lc.start();
-    
-    // Push the disposable to the context's subscriptions so that the 
-    // client can be deactivated on extension deactivation
-    context.subscriptions.push(disposable);
+    lc.setTrace(Trace.Verbose);
+    lc.start();
+}
+export function deactivate() {
+    return lc.stop();
 }
