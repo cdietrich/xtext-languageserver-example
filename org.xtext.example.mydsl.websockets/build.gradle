@@ -18,7 +18,7 @@ startScripts {
 jar {
     manifest {
         attributes 'Implementation-Title': 'Websocket',
-                   'Implementation-Version': version,
+                   'Implementation-Version': archiveVersion,
                    'Main-Class': 'org.xtext.example.mydsl.websockets.RunWebSocketServer'
     }
 }

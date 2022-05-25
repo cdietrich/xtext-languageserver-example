@@ -13,7 +13,7 @@ startScripts {
 
 // Add another start script for the standalone / self-contained case
 task standaloneStartScript(type: CreateStartScripts) {
-	mainClassName = 'org.eclipse.xtext.ide.server.ServerLauncher'
+	mainClass = 'org.eclipse.xtext.ide.server.ServerLauncher'
 	applicationName = 'mydsl-standalone'
 	def t = project.tasks.getByPath('startScripts');
     classpath = t.classpath;
