@@ -11,8 +11,11 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.function.Function;
 
+import org.eclipse.lsp4j.jsonrpc.JsonRpcException;
 import org.eclipse.lsp4j.jsonrpc.Launcher;
 import org.eclipse.lsp4j.jsonrpc.MessageConsumer;
+import org.eclipse.lsp4j.jsonrpc.MessageIssueException;
+import org.eclipse.lsp4j.jsonrpc.messages.Message;
 import org.eclipse.lsp4j.services.LanguageClient;
 import org.eclipse.xtext.ide.server.LanguageServerImpl;
 import org.eclipse.xtext.ide.server.ServerModule;
@@ -29,7 +32,15 @@ public class RunServer {
 		Injector injector = Guice.createInjector(new ServerModule());
 		LanguageServerImpl languageServer = injector.getInstance(LanguageServerImpl.class);
 		Function<MessageConsumer, MessageConsumer> wrapper = consumer -> {
-			MessageConsumer result = consumer;
+			MessageConsumer result = new MessageConsumer() {
+				
+				@Override
+				public void consume(Message message) throws MessageIssueException, JsonRpcException {
+					System.out.println(message);
+					consumer.consume(message);
+					
+				}
+			};
 			return result;
 		};
 		Launcher<LanguageClient> launcher = createSocketLauncher(languageServer, LanguageClient.class, new InetSocketAddress("localhost", 5007), Executors.newCachedThreadPool(), wrapper);
