@@ -16,26 +16,27 @@ class MyDslCodeActionService implements ICodeActionService2 {
 	}
 
 	override getCodeActions(Options options) {
-		val document = options.document
+
 		val params = options.codeActionParams
-		val resource = options.resource
 		val result = <CodeAction>newArrayList
 		for (d : params.context.diagnostics) {
 			if (d.code.get == MyDslValidator.INVALID_NAME) {
-				val text = document.getSubstring(d.range)
-				result += new CodeAction => [
-					kind = CodeActionKind.QuickFix
-					title = "Capitalize Name"
-					diagnostics = #[d]
-					// for more complex example we would use 
-					// change serializer as in RenameService
-					edit = new WorkspaceEdit() => [
-						addTextEdit(resource.URI, new TextEdit => [
-							range = d.range
-							newText = text.toFirstUpper
-						])
+				options.getLanguageServerAccess().doSyncRead(options.URI) [ ctx |
+					val document = ctx.document
+					val text = document.getSubstring(d.range)
+					result += new CodeAction => [
+						kind = CodeActionKind.QuickFix
+						title = "Capitalize Name"
+						diagnostics = #[d]
+						// for more complex example we would use 
+						// change serializer as in RenameService
+						edit = new WorkspaceEdit() => [
+							addTextEdit(ctx.resource.URI, new TextEdit => [
+								range = d.range
+								newText = text.toFirstUpper
+							])
+						]
 					]
-
 				]
 
 			}
