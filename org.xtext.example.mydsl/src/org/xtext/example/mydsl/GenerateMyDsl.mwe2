@@ -38,11 +38,14 @@ Workflow {
 			
 			formatter = {
 				generateStub = true
-				generateXtendStub = true
+				generateXtendStub = false
 			}
 			generator = {
 				generateStub = true
 				generateXtendStub = true
+			}
+			junitSupport = {
+				generateXtendStub = false
 			}
 		}
 	}
