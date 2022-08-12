@@ -4,7 +4,9 @@
 package org.xtext.example.mydsl.ide;
 
 import org.eclipse.xtext.ide.editor.contentassist.IdeContentProposalProvider;
+import org.eclipse.xtext.ide.editor.quickfix.IQuickFixProvider;
 import org.eclipse.xtext.ide.server.codeActions.ICodeActionService2;
+import org.eclipse.xtext.ide.server.codeActions.QuickFixCodeActionService;
 import org.eclipse.xtext.ide.server.commands.IExecutableCommandService;
 import org.eclipse.xtext.ide.server.hover.HoverService;
 import org.xtext.example.mydsl.ide.contentassist.MyDslIdeContentProposalProvider;
@@ -22,8 +24,12 @@ public class MyDslIdeModule extends AbstractMyDslIdeModule {
 		return CommandService.class;
 	}
 	
+	public Class<? extends IQuickFixProvider> bindIQuickFixProvider() {
+		return MyDslIdeQuickfixProvider.class;
+	}
+	
 	public Class<? extends ICodeActionService2> bindICodeActionService2() {
-		return MyDslCodeActionService.class;
+		return QuickFixCodeActionService.class;
 	}
 	
 	public Class<? extends IdeContentProposalProvider> bindIdeContentProposalProvider() {
