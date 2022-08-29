@@ -14,7 +14,7 @@ import org.xtext.example.mydsl.myDsl.MyDslPackage;
  */
 public class MyDslValidator extends AbstractMyDslValidator {
 	
-	public static String INVALID_NAME = "invalidName";
+	public static final String INVALID_NAME = "invalidName";
 
 	@Check
 	public void checkGreetingStartsWithCapital(Greeting greeting) {
