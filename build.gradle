@@ -123,7 +123,6 @@ updateVersion {
 			def filesToUpdate = [
 				new File('vscode-extension', 'package.json'),
 				new File('vscode-extension-self-contained', 'package.json'),
-				new File('atom-extension', 'package.json')
 			]
 
 			// String replacements - isn't long enough to justify advanced code ;)
