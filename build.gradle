@@ -22,11 +22,8 @@ node {
 
 // Configuration for Xtext projects
 configure(subprojects.findAll { it.name.startsWith('org.xtext') }) {
-	ext.xtextVersion = '2.31.0-SNAPSHOT'
+	ext.xtextVersion = '2.31.0'
 	repositories {
-		maven {
-		 	url 'https://oss.sonatype.org/content/repositories/snapshots'
-		}
 		mavenCentral()
 	}
 	
