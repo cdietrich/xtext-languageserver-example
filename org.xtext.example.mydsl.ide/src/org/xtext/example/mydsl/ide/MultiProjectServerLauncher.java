@@ -10,13 +10,12 @@ import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.util.concurrent.Future;
 
-import javax.inject.Inject;
-
 import org.eclipse.lsp4j.jsonrpc.Launcher;
 import org.eclipse.lsp4j.services.LanguageClient;
 import org.eclipse.xtext.ide.server.LanguageServerImpl;
 import org.eclipse.xtext.ide.server.ServerModule;
 
+import com.google.inject.Inject;
 import com.google.inject.Guice;
 import com.google.inject.util.Modules;
 
