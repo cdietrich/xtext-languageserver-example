@@ -39,8 +39,8 @@ configure(subprojects.findAll { it.name.startsWith('org.xtext') }) {
 	group = 'org.xtext.example.mydsl'
 	version = '1.0.0-SNAPSHOT'
 	
-	sourceCompatibility = '1.8'
-	targetCompatibility = '1.8'
+	sourceCompatibility = '11'
+	targetCompatibility = '11'
 	
 	configurations.all {
 		exclude group: 'asm'
