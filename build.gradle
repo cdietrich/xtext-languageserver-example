@@ -48,21 +48,13 @@ configure(subprojects.findAll { it.name.startsWith('org.xtext') }) {
 
 }
 
-task npmInstallVsce(type: NpmTask, dependsOn: npmSetup) {
-	ext.destPath = "$rootProject.projectDir/node_modules/vsce" 
-	outputs.dir(destPath)
-	group 'Node'
-	description 'Installs the NodeJS package "Visual Studio Code Extension Manager"'
-	args = [ 'install', 'vsce' ]
-}
-
 // Configuration for vscode projects
 configure(subprojects.findAll { it.name.startsWith('vscode') }) {
 
 	apply plugin: 'com.github.node-gradle.node'
 	node {
-	    version = '16.13.2'
-	    npmVersion = '8.3.0'
+	    version = '18.20.4'
+	    npmVersion = '10.7.0'
 	    download = true
 	}
 
@@ -76,19 +68,15 @@ configure(subprojects.findAll { it.name.startsWith('vscode') }) {
 		outputs.dir('out')
 	}
 
-	task vscodeExtension(dependsOn: [npmInstall, npmInstallVsce], type: NodeTask) {
+	task vscodeExtension(dependsOn: [npmInstall], type: NodeTask) {
 		ext.destDir = new File(buildDir, 'vscode')
 		ext.archiveName = "$project.name-${project.version}.vsix"
 		ext.destPath = "$destDir/$archiveName"
-		inputs.with {
-			files inputFiles
-			dir npmInstallVsce.destPath
-		}
 		outputs.dir destDir
 		doFirst {
 			destDir.mkdirs()
 		}
-		script = file("$npmInstallVsce.destPath/vsce")
+		script = file("node_modules/vsce/vsce")
 		args = [ 'package', '--out', destPath ]
 		execOverrides {
 			workingDir = projectDir
