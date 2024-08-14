@@ -1,5 +1,5 @@
 dependencies {
 	api project(':org.xtext.example.mydsl')
 	testImplementation "org.eclipse.xtext:org.eclipse.xtext.testing:${xtextVersion}"
-	testImplementation "junit:junit:4.12"
+	testImplementation "junit:junit:4.13.2"
 }
