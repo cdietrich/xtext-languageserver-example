@@ -1,4 +1,6 @@
-apply plugin: 'application'
+plugins {
+    id 'application'
+}
 
 dependencies {
 	api project(':org.xtext.example.mydsl')
@@ -9,10 +11,12 @@ dependencies {
 	api "org.java-websocket:Java-WebSocket:1.5.7"
 }
 
-// Add a start script for the websocket case
-mainClassName = 'org.xtext.example.mydsl.websockets.RunWebSocketServer'
-startScripts {
-	applicationName = 'mydsl-websocket'
+application {
+	// Add a start script for the websocket case
+	mainClass = 'org.xtext.example.mydsl.websockets.RunWebSocketServer'
+	startScripts {
+		applicationName = 'mydsl-websocket'
+	}
 }
 
 jar {
