@@ -126,8 +126,3 @@ release {
     newVersionCommitMessage = '[release] new version commit: '
     failOnSnapshotDependencies = false
 }
-
-// Workaround for issue https://github.com/researchgate/gradle-release/issues/144
-task build {
-	dependsOn subprojects.findResults { it.tasks.findByName('build') }
-}
