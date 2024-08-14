@@ -1,10 +1,14 @@
 version: 2
 updates:
   - package-ecosystem: "npm"
-    directory: "/"
+    directory: "/vscode-extension-self-contained"
     schedule:
       interval: "weekly"
-  - package-ecosystem: "maven"
+  - package-ecosystem: "npm"
+    directory: "/vscode-extension"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "gradle"
     directory: "/"
     schedule:
       interval: "weekly"
