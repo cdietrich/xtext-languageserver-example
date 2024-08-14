@@ -1,15 +1,21 @@
-apply plugin: 'application'
+plugins {
+    id 'application'
+}
 
 dependencies {
 	api project(':org.xtext.example.mydsl')
 	api "org.eclipse.xtext:org.eclipse.xtext.ide:${xtextVersion}"
 }
 
-// Add a start script for the socket case
-mainClassName = 'org.xtext.example.mydsl.ide.RunServer'
-startScripts {
-	applicationName = 'mydsl-socket'
+
+application {
+	// Add a start script for the socket case
+	mainClass = 'org.xtext.example.mydsl.ide.RunServer'
+	startScripts {
+		applicationName = 'mydsl-socket'
+	}
 }
+
 
 // Add another start script for the standalone / self-contained case
 task standaloneStartScript(type: CreateStartScripts) {
