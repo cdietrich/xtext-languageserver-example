@@ -53,9 +53,9 @@ configure(subprojects.findAll { it.name.startsWith('vscode') }) {
 
 	apply plugin: 'com.github.node-gradle.node'
 	node {
-	    version = '18.20.4'
-	    npmVersion = '10.7.0'
-	    download = true
+		version = '20.16.0'
+		npmVersion = '10.8.1'
+		download = true
 	}
 
 	def inputFiles = fileTree(
@@ -76,7 +76,7 @@ configure(subprojects.findAll { it.name.startsWith('vscode') }) {
 		doFirst {
 			destDir.mkdirs()
 		}
-		script = file("node_modules/vsce/vsce")
+		script = file("node_modules/.bin/vsce")
 		args = [ 'package', '--out', destPath ]
 		execOverrides {
 			workingDir = projectDir
