@@ -8,7 +8,7 @@ buildscript {
 	dependencies {
 		classpath 'org.xtext:xtext-gradle-plugin:4.0.0'
 		classpath 'com.github.node-gradle:gradle-node-plugin:7.0.2'
-		classpath 'net.researchgate:gradle-release:2.8.1'
+		classpath 'net.researchgate:gradle-release:3.0.2'
 	}
 }
 
@@ -125,9 +125,4 @@ release {
     tagCommitMessage = '[release] creating tag: '
     newVersionCommitMessage = '[release] new version commit: '
     failOnSnapshotDependencies = false
-}
-
-// Workaround for issue https://github.com/researchgate/gradle-release/issues/144
-task build {
-	dependsOn subprojects.findResults { it.tasks.findByName('build') }
 }
