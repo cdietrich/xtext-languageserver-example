@@ -7,7 +7,7 @@ buildscript {
 	}
 	dependencies {
 		classpath 'org.xtext:xtext-gradle-plugin:4.0.0'
-		classpath 'com.github.node-gradle:gradle-node-plugin:3.3.0'
+		classpath 'com.github.node-gradle:gradle-node-plugin:7.0.2'
 		classpath 'net.researchgate:gradle-release:2.8.1'
 	}
 }
