@@ -6,6 +6,8 @@ updates:
       - "/vscode-extension-self-contained"
     schedule:
       interval: "weekly"
+    commit-message:
+      prefix: "npm"
   - package-ecosystem: "gradle"
     directory: "/"
     schedule:
