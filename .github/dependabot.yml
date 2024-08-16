@@ -1,21 +1,11 @@
 version: 2
 updates:
   - package-ecosystem: "npm"
-    directory: "/vscode-extension-self-contained"
+    directories:
+      - "/vscode-extension"
+      - "/vscode-extension-self-contained"
     schedule:
       interval: "weekly"
-    groups:
-      npm-dependencies:
-        patterns:
-          - "*"
-  - package-ecosystem: "npm"
-    directory: "/vscode-extension"
-    schedule:
-      interval: "weekly"
-    groups:
-      npm-dependencies:
-        patterns:
-          - "*"
   - package-ecosystem: "gradle"
     directory: "/"
     schedule:
