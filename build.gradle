@@ -12,13 +12,8 @@ buildscript {
 	}
 }
 
-apply plugin: 'com.github.node-gradle.node'
 apply plugin: 'net.researchgate.release'
-node {
-	version = '16.13.2'
-	npmVersion = '8.3.0'
-	download = true
-}
+
 
 // Configuration for Xtext projects
 configure(subprojects.findAll { it.name.startsWith('org.xtext') }) {
