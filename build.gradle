@@ -17,7 +17,7 @@ apply plugin: 'net.researchgate.release'
 
 // Configuration for Xtext projects
 configure(subprojects.findAll { it.name.startsWith('org.xtext') }) {
-	ext.xtextVersion = '2.35.0'
+	ext.xtextVersion = '2.36.0'
 	repositories {
 		mavenCentral()
 	}
