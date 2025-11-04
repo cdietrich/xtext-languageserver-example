@@ -56,7 +56,7 @@
     },
     "devDependencies": {
         "@types/node": "^20.19.24",
-        "@types/vscode": "^1.103.0",
+        "@types/vscode": "^1.105.0",
         "typescript": "^5.9.3",
         "@vscode/test-electron": "^2.5.2",
         "@vscode/vsce": "^3.6.2"
