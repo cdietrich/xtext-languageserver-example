@@ -59,7 +59,7 @@
         "@types/vscode": "^1.103.0",
         "typescript": "^5.9.3",
         "@vscode/test-electron": "^2.5.2",
-        "@vscode/vsce": "^3.6.2"
+        "@vscode/vsce": "^3.7.0"
     },
     "dependencies": {
         "vscode-languageclient": "^9.0.1"
