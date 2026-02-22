@@ -7,7 +7,7 @@ dependencies {
 	api project(':org.xtext.example.mydsl.ide')
 	api "org.eclipse.xtext:org.eclipse.xtext.ide:${xtextVersion}"
 	api "org.slf4j:slf4j-api:2.0.16"
-	api "org.slf4j:slf4j-simple:2.0.16"
+	api "org.slf4j:slf4j-simple:2.0.17"
 	api "org.java-websocket:Java-WebSocket:1.6.0"
 }
 
