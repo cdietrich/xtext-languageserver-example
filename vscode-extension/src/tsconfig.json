@@ -2,7 +2,7 @@
     "compilerOptions": {
         "target": "es6",
         "module": "commonjs",
-        "moduleResolution": "node",
+        "moduleResolution": "bundler",
         "sourceMap": false,
         "inlineSources": false,
         "declaration": true,
