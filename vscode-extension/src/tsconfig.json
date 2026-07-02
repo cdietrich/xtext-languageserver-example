@@ -1,14 +1,14 @@
 {
     "compilerOptions": {
-        "target": "es6",
+        "target": "es2022",
         "module": "esnext",
         "moduleResolution": "bundler",
         "noEmit": true,
         "sourceMap": false,
         "inlineSources": false,
-        "declaration": true,
         "stripInternal": true,
-        "lib": [ "es6" ],
+        "lib": [ "es2022" ],
+        "types": [ "node" ],
         "outDir": "../out"
     }
 }
