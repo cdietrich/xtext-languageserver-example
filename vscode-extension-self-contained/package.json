@@ -60,7 +60,7 @@
         "typescript": "^7.0.2",
         "@vscode/test-electron": "^3.1.0",
         "@vscode/vsce": "^3.9.2",
-        "esbuild": "^0.28.1"
+        "esbuild": "^0.28.2"
     },
     "dependencies": {
         "vscode-languageclient": "^10.1.0"
