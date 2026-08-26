@@ -60,7 +60,7 @@
         "typescript": "^7.0.2",
         "@vscode/test-electron": "^3.1.0",
         "@vscode/vsce": "^3.9.2",
-        "esbuild": "^0.28.2"
+        "esbuild": "0.28.2"
     },
     "dependencies": {
         "vscode-languageclient": "^10.1.0"
@@ -74,5 +74,10 @@
         "compile": "npm run typecheck && npm run esbuild:extension",
         "watch": "npm run esbuild:watch",
         "update-vscode": "node ./node_modules/vscode/bin/install"
+    },
+    "allowScripts": {
+        "@vscode/vsce-sign@2.0.4": true,
+        "esbuild@0.28.2": true,
+        "keytar@7.9.0": true
     }
 }
