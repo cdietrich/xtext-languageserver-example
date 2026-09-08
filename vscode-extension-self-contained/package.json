@@ -63,7 +63,7 @@
         "esbuild": "0.28.2"
     },
     "dependencies": {
-        "vscode-languageclient": "^10.1.0"
+        "vscode-languageclient": "^10.1.1"
     },
     "scripts": {
         "prepare": "npm run compile",
