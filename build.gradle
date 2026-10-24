@@ -50,8 +50,8 @@ configure(subprojects.findAll { it.name.startsWith('vscode') }) {
 
 	apply plugin: 'com.github.node-gradle.node'
 	node {
-		version = '20.20.0'
-		npmVersion = '11.19.0'
+		version = '22.23.4'
+		npmVersion = '11.21.1'
 		download = true
 	}
 
